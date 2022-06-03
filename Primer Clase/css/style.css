@@ -1,0 +1,35 @@
+/*Nav styles*/
+.navbar {
+  background-color: #333;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+}
+.navbar a {
+  color: white;
+    text-decoration: none;
+    padding: 0.5rem;
+    flex: 0 1;
+
+}
+.navbar a:hover{
+    color: #ddd;
+
+}
+/*Footer styles*/
+.footer {
+  background-color: #333;
+  padding: 25px;
+  color: white;
+}
+.footer a {
+  color: white;
+}
+.footer a:hover {
+  color: #ddd;
+}
