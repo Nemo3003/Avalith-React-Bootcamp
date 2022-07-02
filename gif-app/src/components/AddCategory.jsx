@@ -1,29 +1,30 @@
-import React from 'react';
-import { useState } from 'react';
+import React from 'react'
+import { useState } from 'react'
 
-export const AddCategory = ({addCategory}) => {
+export const AddCategory = ({ addCategory }) => {
 
-    const [inputValue, setInputValue]= useState('')
+    const [inputValue, setInputValue] = useState('');
 
-    const handleInputChange = ({target}) => {
-        setInputValue(target.value);
+    const handleInputChange = ({ target })=>{
+        setInputValue(target.value);        
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e)=>{
         e.preventDefault();
-        if(inputValue.trim().length<1) return;
-        
+        if(inputValue.trim().length < 1) return;
 
-        addCategory(inputValue.trim());
+        addCategory(inputValue.trim());        
         setInputValue('');
     }
-    return(
-        <form onSubmit={handleSubmit}>
-            <input
-                type="text"
-                placeholder="Buscar GIF"
-                value={inputValue}
-                onChange = {handleInputChange}
-            />
-        </form>
-    )}
+
+  return (
+    <form onSubmit={handleSubmit} >
+        <input 
+            type='text'
+            placeholder='Buscar Gif'
+            value={inputValue}
+            onChange={handleInputChange}
+        />       
+    </form>
+  )
+}

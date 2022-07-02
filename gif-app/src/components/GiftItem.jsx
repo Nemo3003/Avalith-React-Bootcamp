@@ -1,4 +1,3 @@
-
 export const GifItem = ({title, url}) => {
   
     return (
