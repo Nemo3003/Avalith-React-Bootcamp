@@ -1,3 +1,4 @@
+import styles from '../css/styles.css';
 
 export const GifItem = ({title, url}) => {
   

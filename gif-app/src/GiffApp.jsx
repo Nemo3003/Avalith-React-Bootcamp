@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { AddCategory } from "./components/AddCategoty";
 import { GifGrid } from "./components/GifGrid";
 
+import styles from '../css/styles.css';
 
 export const GifApp = () => {
   const [categories, setCategories] = useState([]);
@@ -14,7 +15,7 @@ export const GifApp = () => {
   return (
     <>
      
-      <h1>GifApp</h1>
+      <h1 className="title-app">GifApp</h1>
 
       <AddCategory addCategory={handleAddCategory} />
 

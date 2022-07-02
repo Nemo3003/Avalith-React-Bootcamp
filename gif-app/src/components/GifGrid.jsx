@@ -1,5 +1,6 @@
 import { useFetchGif } from "../hooks/useFetchGif";
-import { GifItem } from "./GiftItem";
+import { GifItem } from "./GifItem";
+import styles from '../css/styles.css';
 
 export const GifGrid = ({category}) => {
 
@@ -12,7 +13,7 @@ export const GifGrid = ({category}) => {
         {/* Desplegar Listado */}
         <div className="card-grid">
           {
-            loading ? <h2>Cargando...</h2> :
+            loading ? <h2>Loading...</h2> :
             imagenes.map(imagen => <GifItem key={imagen.id} {...imagen} />)
           }
         </div>            
