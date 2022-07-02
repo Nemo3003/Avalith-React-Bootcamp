@@ -7,7 +7,8 @@ export const getGifs = async (category) =>{
     const resp = await fetch(url);
   
     const { data } = await resp.json()
-  
+    //get a number from 1 to 10
+ 
     const gifs = data.map(img => (
       {
         id: img.id,

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { AddCategory } from "./components/AddCategoty";
 import { GifGrid } from "./components/GifGrid";
 
-import styles from '../css/styles.css';
+import styles from './css/styles.css';
 
 export const GifApp = () => {
   const [categories, setCategories] = useState([]);
@@ -18,7 +18,7 @@ export const GifApp = () => {
       <h1 className="title-app">GifApp</h1>
 
       <AddCategory addCategory={handleAddCategory} />
-
+      
       {
       categories.map((category) => (
         <GifGrid key={category} category={category} />

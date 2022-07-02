@@ -1,5 +1,6 @@
 import { useState } from 'react'
 
+
 export const AddCategory = ({ addCategory }) =>{
 
     const [inputValue,setInputValue] = useState('');
@@ -18,12 +19,17 @@ export const AddCategory = ({ addCategory }) =>{
     }
 
     return(
+        <>
         <form onSubmit={handleSubmit}>
             <input
                 type='text'
                 placeholder='Buscar Gif'
                 onChange={handleInputChange}
+                
             />
         </form>
+        <button onClick={() => window.location.reload()}>Reset</button>
+
+        </>
     )
 }
