@@ -1,6 +1,6 @@
 import { useFetchGif } from "../hooks/useFetchGif";
 import { GifItem } from "./GifItem";
-import styles from '../css/styles.css';
+import '../css/large.css';
 
 export const GifGrid = ({category}) => {
 
@@ -12,7 +12,6 @@ export const GifGrid = ({category}) => {
     <>
         <h3>{category}</h3>     
         
-        <button onClick={console.log("deletion in progress...")}>Delete Category</button>    
         <div className="card-grid">
           {
             loading ? <h2>Loading...</h2> :

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 
+const handleReset = () => window.location.reload()
 
 export const AddCategory = ({ addCategory }) =>{
 
@@ -28,7 +29,7 @@ export const AddCategory = ({ addCategory }) =>{
                 
             />
         </form>
-        <button onClick={() => window.location.reload()}>Reset</button>
+        <button class="button-30" role="button" onClick={handleReset}>Reset</button>
 
         </>
     )

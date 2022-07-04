@@ -1,0 +1,18 @@
+@media only screen 
+  and (min-width: 7.5rem) 
+  and (max-width: 31rem)
+ {
+    :root{
+        --main: #3D9970;
+    }
+    html, body,main{
+        background-color: var(--main);
+    }
+    ul{
+        list-style: none;
+        color: #001f3f
+    }
+    form input{
+        max-width: 14rem;
+    }
+ }
