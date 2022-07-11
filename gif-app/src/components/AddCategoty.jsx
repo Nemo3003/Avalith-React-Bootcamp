@@ -29,7 +29,7 @@ export const AddCategory = ({ addCategory }) =>{
                 
             />
         </form>
-        <button class="button-30" role="button" onClick={handleReset}>Reset</button>
+        <button className="button-30" role="button" onClick={handleReset}>Reset</button>
 
         </>
     )

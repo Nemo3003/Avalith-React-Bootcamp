@@ -4,11 +4,11 @@ let timeDatBtn = document.getElementById('DayNight');
 timeDatBtn.innerHTML = timeDay;
 
 //Depending on the time of the day, we will change the color page to a darker one or a lighter one
-if(timeDay > 6 && timeDay < 18){
-    document.body.style.backgroundColor = '#AAAAAA';
+if(timeDay < 6  || timeDay > 18){
+    document.body.style.backgroundColor ='#DDDDDD' ;
 }
 else{
-    document.body.style.backgroundColor = '#DDDDDD';
+    document.body.style.backgroundColor = '#AAAAAA';
 }
 //When was your last visit?
 let numOfVisits = document.querySelector('.daysOfVisit');
