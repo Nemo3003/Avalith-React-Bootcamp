@@ -13,7 +13,7 @@ export const GifItem = ({title, url}) => {
         <>
         <div className="card">
             <img src={url} alt="gif" />
-            <p>{title}</p>
+            <p data-testid='test-title'>{title}</p>
         </div>
         {/**Button to get image*/}
         <button className="button-30" role="button" onClick={handleGetImage}>Get more</button>
