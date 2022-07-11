@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import PropTypes from 'prop-types';
 
 const handleReset = () => window.location.reload()
 
@@ -33,4 +34,7 @@ export const AddCategory = ({ addCategory }) =>{
 
         </>
     )
+}
+AddCategory.propType ={
+    addCategory: PropTypes.func.isRequired
 }
