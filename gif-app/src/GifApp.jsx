@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { AddCategory } from "./components/AddCategoty";
 import { GifGrid } from "./components/GifGrid";
-import Navbar from "./components/NavBar";
-import './css/small.css';
-import  './css/large.css';
+import { Navbar } from "./components/NavBar";
+/*import './css/small.css';
+import  './css/large.css';*/
 
 
 export const GifApp = () => {

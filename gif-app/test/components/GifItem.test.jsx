@@ -29,7 +29,7 @@ describe('Test en <GifItem/>', () => {
         /*expect(screen.getByRole('img').src).toContain(url);
         expect(screen.getByRole('img').alt).toContain('gif');*/
 
-        const{src,alt}=screen.getByRole('img');
+        const{src,alt}=screen.getByRole( 'img' );
         expect(src).toContain(url);
         expect(alt).toContain('gif');
     })

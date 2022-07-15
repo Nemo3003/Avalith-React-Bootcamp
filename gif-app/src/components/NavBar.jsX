@@ -1,5 +1,5 @@
-import '../css/large.css';
-import '../css/small.css';
+//import '../css/large.css';
+//import '../css/small.css';
 
 export default function Navbar(){
     return <nav className="navigation">
