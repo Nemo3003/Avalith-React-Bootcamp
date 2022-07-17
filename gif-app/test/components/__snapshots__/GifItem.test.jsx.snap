@@ -9,7 +9,9 @@ exports[`Test en <GifItem/> Debe coincidir con el snapshot 1`] = `
       alt="gif"
       src="https://dragon-ball.com/goku.jpg"
     />
-    <p>
+    <p
+      data-testid="test-title"
+    >
       Dragon Ball
     </p>
   </div>

@@ -1,5 +1,5 @@
-import { render,screen } from "@testing-library/react";
-import {GifItem} from "../../src/components/GifItem";
+import { render,screen,fireEvent } from "@testing-library/react";
+import {GifItem, handleGetImage} from "../../src/components/GifItem";
 
 describe('Test en <GifItem/>', () => {
 
@@ -33,5 +33,12 @@ describe('Test en <GifItem/>', () => {
         expect(src).toContain(url);
         expect(alt).toContain('gif');
     })
+    /*const handleGetImage = () => {
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = title;
+        link.click();
+    }*/
+ 
 
 });
