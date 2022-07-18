@@ -3,6 +3,7 @@ import { renderHook, act } from "@testing-library/react";
 import { render,screen,fireEvent } from "@testing-library/react";
 import renderer from 'react-test-renderer';
 import { AddCategory } from "./components/AddCategoty";
+
 //Verificar cambio en el estado de categorías, cuando se ejecuta la función handleAddCategory.
 describe('Testing the main component GifApp', () => {
 
@@ -51,5 +52,18 @@ test('Una categoria es eliminada por el handleRemotion', () => {
   expect(categories).toEqual(undefined);
 });
   
-
+test('Colores son distintos de dia y de noche', () => {
+  //const day = screen.getByRole('body');
+  let wrapper;
+  beforeEach(() => {
+    wrapper = shallow(<Button />);
+  })
+  const daily = wrapper.find('body')
+  const time = new Date().getHours();
+  if (time < 18) {
+    expect(daily).toHaveStyle('background-color: #AAAAAA');
+  } else {
+    expect(daily).toHaveStyle('background-color: #DDDDDD');
+  }
+})
 });
