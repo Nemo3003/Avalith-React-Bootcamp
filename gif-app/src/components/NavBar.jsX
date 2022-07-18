@@ -3,7 +3,7 @@
 
 export default function Navbar(){
     return <nav className="navigation">
-        <a href="https://github.com/Nemo3003" className="site-title">Ulises' Github</a>
+        <a href="https://github.com/Nemo3003" className="site-title" test-id="navbar-test">Ulises' Github</a>
         <ul>
             <li><a href="#">Home</a></li>
             <li> <a href='#'>&nbsp;Practice</a></li>

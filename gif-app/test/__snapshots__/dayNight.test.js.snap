@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<nav
+  className="navigation"
+>
+  <a
+    className="site-title"
+    href="https://github.com/Nemo3003"
+  >
+    Ulises' Github
+  </a>
+  <ul>
+    <li>
+      <a
+        href="#"
+      >
+        Home
+      </a>
+    </li>
+    <li>
+       
+      <a
+        href="#"
+      >
+         Practice
+      </a>
+    </li>
+    <li>
+       
+      <a
+        href="#"
+      >
+         First Project
+      </a>
+    </li>
+    <li>
+      <a
+        href="#"
+      >
+         Second Project
+      </a>
+    </li>
+    <li>
+      <a
+        href="#"
+      >
+         Third Project
+      </a>
+    </li>
+  </ul>
+</nav>
+`;

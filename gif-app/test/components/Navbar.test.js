@@ -1,11 +1,10 @@
-import {Navbar} from '../../src/components/Navbar';
+import { getByTestId } from '@testing-library/react';
 import renderer from 'react-test-renderer';
-import { render,screen,fireEvent } from "@testing-library/react";
+import Navbar from '../../src/components/Navbar';
 
-describe('Navbar', () => {
-    test('Debe coincidir con el snapshot', () => {
-        const {container} = render(<Navbar/>)
-
-        expect (container).toMatchSnapshot();
-        
-    })});
+it('renders correctly', () => {
+  const tree = renderer
+    .create(<Navbar />)
+    .toJSON();
+  expect(tree).toMatchSnapshot();
+});

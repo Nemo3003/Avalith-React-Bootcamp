@@ -1,8 +1,8 @@
 import { GifApp, handleAddCategory, Button, handleReset } from "./GifApp";
-
 import { renderHook, act } from "@testing-library/react";
-
-import { shallow } from 'enzyme';
+import { render,screen,fireEvent } from "@testing-library/react";
+import renderer from 'react-test-renderer';
+import { AddCategory } from "./components/AddCategoty";
 //Verificar cambio en el estado de categorías, cuando se ejecuta la función handleAddCategory.
 describe('Testing the main component GifApp', () => {
 
@@ -24,16 +24,32 @@ describe('Testing the main component GifApp', () => {
         handleReset.call = jest.fn();
         expect(handleReset.call).toHaveBeenCalledTimes(1);
 }});
-    //The addCategory function
-    test('Al hacer click, el handleAddCategory debe de agregar una categoria', () => {
-      const handleAddCategory = function() {
-        handleAddCategory.call = jest.fn()
-        expect(handleAddCategory.call).toHaveBeenCalledTimes(1);
-}});
-    test('Al hacer click, el handleDelete debe de elimnar una categoria', () => {
+test('El estado cambio', () => {
+    const tree = renderer
+      .create(<AddCategory />)
+      .toJSON();
+    
+  render(<AddCategory addCategory={() => {}}/>);
+  //screen.debug()
+
+  const input = screen.getByRole('textbox');
+
+  fireEvent.change(input,{target: {value: 'Goku'}});
+
+  //expect (input.value).toBe('Goku');
+  expect(tree).toMatchSnapshot();
+
+})
+    test('Al hacer click, el handleDelete debe de renderizarse', () => {
       const handleDelete = function() {
         handleDelete.call = jest.fn()
         expect(handleDelete.call).toHaveBeenCalledTimes(1);
 }});
+test('Una categoria es eliminada por el handleRemotion', () => {
+  const { result } = renderHook(() => GifApp());
+  const { categories } = result.current;
+  expect(categories).toEqual(undefined);
+});
   
+
 });

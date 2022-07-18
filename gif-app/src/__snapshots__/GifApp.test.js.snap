@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing the main component GifApp El estado cambio 1`] = `
+Array [
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      onChange={[Function]}
+      placeholder="Search a Gif"
+      type="text"
+    />
+  </form>,
+  <button
+    className="button-30"
+    onClick={[Function]}
+    role="button"
+  >
+    Reset
+  </button>,
+]
+`;
