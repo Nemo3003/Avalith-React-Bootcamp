@@ -5,169 +5,188 @@
 // Pista: "console.log()" NO fucionará.
 // No cambies los nombres de las funciones.
 
-export function devolverString() {
+export function devolverString(name) {
   // Tu código:
+  if(typeof name === 'string'){
+    return name
+  }else{
+    let named = name.toString()
+    return named;
+  }
 
-  return;  
 }
 
-export function suma() {
+export function suma(x,y) {
  // Tu código:
 
-  return;  
+  return x + y;  
 }
-
-export function resta() {
+//3
+export function resta(x,y) {
  // Tu código:
 
-  return;
+  return x - y;
 }
-
-export function multiplica() {
+//4
+export function multiplica(x,y) {
   // Tu código:
 
-  return;
+  return x* y;
 }
-
-export function divide() { 
+//5
+export function divide(x,y) { 
   // Tu código:
 
-  return;
+  return x/y;
 }
-
-export function sonIguales() {  
+//6
+export function sonIguales(x,y) {  
   // Tu código:
 
-  return;  
+  return x === y;  
 }
-
-export function tienenMismaLongitud() {  
+//7
+export function tienenMismaLongitud(x,y) {  
   // Tu código:
 
-  return;
+  if(x.length === y.length){
+    return true;
+  }else{
+    return false;
+  }
 }
-
-export function menosQueNoventa() {  
+//8
+export function menosQueNoventa(num) {  
   // Tu código:
 
-  return;
+  let x = num < 90? true : false;
+  return x;
 }
-
-export function mayorQueCincuenta() {  
+//9
+export function mayorQueCincuenta(num) {  
   // Tu código:
 
-  return;
+  let y = num > 50? true : false;
+  return y;
 }
-
-export function obtenerResto() {  
+//10
+export function obtenerResto(x,y) {  
   // Tu código:
 
-  return;
+  return x % y;
 }
-
-export function esPar() {
+//11
+export function esPar(num) {
   // Tu código:
 
-  return;
+  let numy = num % 2 === 0 ? true : false;
+  return numy;
 }
-
-export function esImpar() {  
+//12
+export function esImpar(num) {  
   // Tu código:
 
-  return;
+  let impar = num % 2 !== 0? true : false;
+  return impar;
 }
-
-export function elevarAlCuadrado() {  
+//13
+export function elevarAlCuadrado(num) {  
   // Tu código:
 
-  return;
+  return num**2;
 }
-
-export function elevarAlCubo() { 
+//14
+export function elevarAlCubo(num) { 
   // Tu código:
 
-  return;
+  return num**3;
 }
-
-export function elevar() {  
+//15
+export function elevar(num, exponent) {  
   // Tu código:
 
-  return;
+  return num**exponent; 
 }
-
-export function redondearNumero() {  
+//16
+export function redondearNumero(num) {  
   // Tu código:
 
-  return;
+  return Math.round(num);
 }
-
-export function redondearHaciaArriba() { 
+//17
+export function redondearHaciaArriba(num) { 
   // Tu código:
 
-  return;
+  return Math.ceil(num)
 }
-
+//18
 export function numeroRandom() {  
   // Tu código:
 
-  return;
+  return Math.random();
 }
-
-export function esPositivo() {
+//19
+export function esPositivo(numero) {
   // Tu código:
+  if (numero === 0){
+    return false;
+  }
+  else if(numero < 0){
+    return "Es negativo";
+  }
+  else{
+    return "Es positivo";
+  }
   
-  return;
 }
-
-export function agregarSimboloExclamacion() {  
+//20
+export function agregarSimboloExclamacion(str) {  
   // Tu código:
 
-  return;
+  return str + "!";
 }
-
-export function combinarNombres() {
+//21
+export function combinarNombres(fname,lname) {
   // Tu código:
 
-  return;
+  return fname + " " + lname;
 }
-
-export function obtenerSaludo() {
+//22
+export function obtenerSaludo(name) {
   // Tu código:
 
-  return;
+  return `Hola ${name}!`;
+}
+//23
+export function obtenerAreaRectangulo(alto, ancho) {  
+  // Tu código:
+  return alto * ancho;
 }
 
-export function obtenerAreaRectangulo() {  
+//24
+export function retornarPerimetro(lado){
   // Tu código:
 
-  return;
+  return lado * 4;
 }
 
-
-export function retornarPerimetro(){
+//25
+export function areaDelTriangulo(base, altura){
   // Tu código:
-
-  return;
+  return (altura*base) / 2;
 }
 
-
-export function areaDelTriangulo(){
-  // Tu código:
-
-  return;
-}
-
-
-export function deEuroAdolar(){
+//26
+export function deEuroAdolar(euro){
   //Supongamos que 1 euro equivale a 1.20 dólares.
   // Tu código:
-
-  return;
+  let dolar = 1.20;
+  return euro * dolar;
 }
 
-
-export function esVocal(){
+//27
+export function esVocal(letra){
   // Tu código:
-
-  return;
+  let letras = letra === "a" || letra === "e" || letra === "i" || letra === "o" || letra === "u"? "Es vocal" : "Dato incorrecto";
+  return letras;
 }
