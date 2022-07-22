@@ -1,8 +1,9 @@
 import React from 'react';
 import { useCounter } from '../hooks/useCounter';
 import {useFetch} from '../hooks/useFetch';
+import { Blockquote } from './Blockquote';
 
-export const MultipleCustomHooks = () => {
+export const Layout = () => {
     const {counter, increment}= useCounter(1)
     const {data, isLoading} = useFetch(`https://www.breakingbadapi.com/api/quotes/${counter}`);
     console.log(data, isLoading);
@@ -16,13 +17,10 @@ export const MultipleCustomHooks = () => {
             {
                 isLoading ? 
                 <div className="alert alert-info">Loading...</div>
-                : 
-                <blockquote className='blockquote text-end'>
-                    <p className='mb-1'>
-                        {quote}
-                    </p>
-                    <footer className='blockquote-footer mt-1'>{author}</footer>
-                </blockquote>
+                : (
+                    <Blockquote author={author} quote={quote}/>
+                )
+                
             }
             <button 
             onClick={()=>increment(1)}
