@@ -93,59 +93,71 @@ export function fizzBuzz(numero) {
 }
 //NOT YET COMPLETED
 export function operadoresLogicos(num1, num2, num3) {
-  //La función recibe tres números distintos. 
-  //Chequea si alguno de los numeros es negativo, si es así, devuelve falso.
+  //La función recibe tres números distintos.
   // Tu código:
-  if(num1>0 && num1 > num2 && num1 > num3) {
-    return 'Número 1 es mayor y positivo'
-  }
-  //chequear si hay negativos
-  if(num1 <= 0 || num2 < 0 || num3 < 0) {
-    return 'Hay negativos'
-  }
-  if(num3 > num1 && num3 > num2) {
-    return num3 +1
-  }
-  if(num1 === 0 || num2 === 0 || num3 === 0) {
-    return 'Error'
-  }
-}
-
-export function esPrimo(numero) {
-  /// Tu código:
-  if(numero === 1) {
+  if (num1 === 0 || num2 === 0 || num3 === 0) {
+    return "Error";
+  } else if (num1 < 0 || num2 < 0 || num3 < 0) {
+    return "Hay negativos";
+  } else if (num1 > num2 && num1 > num3) {
+    return "Número 1 es mayor y positivo";
+  } else if (num3 > num1 && num3 > num2) {
+    return num3 + 1;
+  } else {
     return false;
   }
-  if(numero === 2) {
+}
+
+export function esPrimo(num) {
+  /// Tu código:
+  if(num===0 || num === 1){
+    return false;
+  }else if (num === 2) {
+    return true;
+  } else {
+    for (let x = 2; x < num; x++) {
+      if (num % x === 0) {
+        return false;
+      }
+    }
     return true;
   }
-  for(let i = 2; i < numero; i++) {
-    if(numero % i === 0) {
-      return false;
-    }
+}
+
+export function esVerdadero(valor) {
+  // Tu código:
+  if(valor===false){
+    return "Soy falso"
+  }else{
+    return "Soy verdadero"
   }
-        return true;  
 }
 
-export function esVerdadero(valor){
+export function tablaDelSeis() {
   // Tu código:
-
-  return;
+  let tabla = [];
+    for(let i = 0; i <= 10; i++){
+      tabla.push(6 * i);
+    }
+    return tabla;
 }
 
-export function tablaDelSeis(){
+export function tieneTresDigitos(numero) {
   // Tu código:
-
-  return;
+  if(numero<100 || numero >999){
+    return false
+  }else{
+    return true
+  }
 }
 
-export function tieneTresDigitos(numero){
-  // Tu código:
-
-  return ;  
-}
-
-export function doWhile(numero) {  
+export function doWhile(numero) {
   //Usar el bucle do ... while.
-  return;
+  let times = 0;
+  do {
+     numero += 5
+     times += 1
+  } while (times<8);
+
+  return numero;
 }
