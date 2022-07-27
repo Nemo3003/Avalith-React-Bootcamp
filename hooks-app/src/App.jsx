@@ -8,6 +8,10 @@ import { FormWithHooks } from './02-useEffect/FormWithHooks'
 import { MultipleCustomHooks } from './03-examples/MultipleCustomHooks'
 import { FocusScreen } from './04-useRef/FocusScreen'
 import { Layout } from './05-useLayoutEffect/Layout'
+import { Memorize } from './06-memo/Memorize'
+import { HookMemo } from './06-memo/HookMemo'
+import { HookCallBack } from './07-HookCallBack/HookCallBack'
+import { Tarea } from './08-Tarea/Tarea'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -16,7 +20,7 @@ function App() {
     <div className="App">
       <h1>Hooks App</h1>
       <hr />
-      <CounterApp/>,
+      {/*<CounterApp/>,
       <hr />
       <CounterWithCustomHooks/>
       <hr />
@@ -29,6 +33,14 @@ function App() {
       <FocusScreen/>
       <hr />
       <Layout/>
+      <hr />
+      <Memorize/>
+      <hr />
+      <HookMemo/>
+      <hr />*/}
+      <HookCallBack/>
+      <hr />
+      <Tarea/>
     </div>
   )
 }
