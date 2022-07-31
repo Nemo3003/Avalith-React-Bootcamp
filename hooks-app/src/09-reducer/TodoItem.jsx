@@ -1,0 +1,37 @@
+import { useState } from "react";
+import TodoEdit from "./TodoEdit"
+
+
+export const TodoItem = ({ todo, onDeleteTodo, onToggleTodo, onEditTodo }) => {
+    //sexto traemos los todos que habiamos agregado en todolist
+      // activar edit 
+      const [editEnable, setEditEnable] = useState(false);
+
+      //Habilitar edicion
+      const editMode = () => {
+          setEditEnable(true);
+      }
+  return (
+    <li className="list-group-item d-flex justify-content-between">
+      {
+                !editEnable ?
+        <><span
+            className={`align-self-center ${(todo.done) ? 'text-decoration-line-through' : ''}`}
+            onClick={() => onToggleTodo(todo.id)}
+            aria-label="span"
+          >
+            {todo.description}
+          </span><button className="btn btn-info" onClick={() => editMode()}>✏️</button><button
+            className="btn btn-danger"
+            onClick={() => onDeleteTodo(todo.id)}
+          >Borrar</button><button className="btn btn-success" onClick={() => onToggleTodo(todo.id)}>Listo</button></>
+        :
+                    <TodoEdit 
+                    setEditEnable={setEditEnable} 
+                    todo={todo}
+                    onEditTodo={onEditTodo}
+                    />
+            }
+    </li>
+  )
+}

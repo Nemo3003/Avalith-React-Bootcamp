@@ -1,21 +1,21 @@
-import React from 'react'
+import React from "react";
+import { TodoItem } from "./TodoItem";
 
-const TodoList = ({todos}) => {
+export const TodoList = ({ todos = [], onDeleteTodo, onToggleTodo, onEditTodo}) => {
+  //sexto traemos los todos que habiamos agregado en todoapp
   return (
-    <>  
-        <h1>TODO LIST</h1>
-        <ul className="list-group ">
-                {todos.map(todo => (
-                    //TODO: Crear <TOdoItem todo={todo}/>
-                    <li key={todo.id} className="list-group-item d-flex justify-content-between">
-                        <span className="align-self-center">{todo.description}</span>
-                        <button  className="btn btn-danger">X</button>
-                    </li>
-                ))}
-            </ul>
-
-    </>
+    <ul className="list-group">
+        {
+            todos.map( todo => (
+                <TodoItem 
+                  key={ todo.id } 
+                  todo={ todo } 
+                  onDeleteTodo={ onDeleteTodo } 
+                  onToggleTodo={ onToggleTodo }
+                  onEditTodo={onEditTodo}
+                />
+            ))
+        }
+    </ul>
   )
 }
-
-export default TodoList

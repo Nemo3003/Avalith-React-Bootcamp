@@ -13,7 +13,7 @@ import { HookMemo } from './06-memo/HookMemo'
 import { HookCallBack } from './07-HookCallBack/HookCallBack'
 import { Tarea } from './08-Tarea/Tarea'
 //import './09-reducer/IntroReducer'
-import TodoApp from './09-reducer/TodoApp'
+import {TodoApp} from './09-reducer/TodoApp'
 
 function App() {
   const [count, setCount] = useState(0)

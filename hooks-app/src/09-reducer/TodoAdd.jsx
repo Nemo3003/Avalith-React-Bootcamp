@@ -1,41 +1,44 @@
-import React from 'react'
-import { UseForm } from '../hooks/UseForm'
+import { useForm } from "../hooks/useForm";
 
-const TodoAdd = ({onNewTodo}) => {
+export const TodoAdd = ({ onNewTodo }) => {
 
-    const {formState, onInputChange,onResetForm}=UseForm({description: " "})
-    const {description} = formState;
-    const onFormSubmit=(e)=>{
-        e.preventDefault();
-        if(description.length >=1){
-            return;
-        }
+  //quinto traemos el use form , comenzamos a destructurar, definimos onchange y onsubmit
+    const { formState, onInputChange, onResetForm } = useForm({
+        description: ''
+    });
+    const { description } = formState;
+    const onFormSubmit = ( event ) => {
+        event.preventDefault();
+        if ( description.length <= 1 ) return;
+
         const newTodo = {
             id: new Date().getTime(),
+            done: false,
             description: description,
-            done: false
         }
+
         onNewTodo(newTodo);
         onResetForm();
     }
-    //;
-  return (
-    <>
-        <form onSubmit={onFormSubmit}>
+
+
+    return (
+        <form onSubmit={ onFormSubmit }>
             <input 
-            type="text" 
-            placeholder='tarea' 
-            className='form-control' 
-            value={description} 
-            name="description"
-            onChange={onInputChange} 
+                type="text" 
+                placeholder="Tarea.."
+                className="form-control"
+                name="description"
+                value={ description }
+                onChange={ onInputChange }
             />
-            <button className='btn btn-primary mt-2' type='submit' onClick={onNewTodo}>
+
+            <button 
+                type="submit"
+                className="btn btn-outline-primary mt-2"
+            >
                 Agregar
             </button>
         </form>
-    </>
-  )
+    )
 }
-
-export default TodoAdd

@@ -1,5 +1,5 @@
 import React from 'react';
-import { UseForm } from '../hooks/UseForm';
+import { useForm } from '../hooks/useForm';
 
 
 export const FormWithHooks = ()=>{
