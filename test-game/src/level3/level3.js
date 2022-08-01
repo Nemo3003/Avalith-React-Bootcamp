@@ -105,71 +105,100 @@ for(let i = 0; i < arreglo.length; i++){
   
 }return contador;}
 
-//14 NOT YET FINISHED
 export function diaDeLaSemana(numeroDeDia) {
   // Tu código:
-  //should return he name of the day associated with that number
-
-
-} 
-
+  if (numeroDeDia === 1 || numeroDeDia === 7) {
+    return "Es fin de semana";
+  } else if (numeroDeDia > 1 && numeroDeDia < 7) {
+    return "Es dia Laboral";
+  }
+}
 
 export function empiezaConNueve(n) {
- // Tu código:
-  //should return true if the number starts with 9
-  return n.toString().startsWith("9");
-
+  // Tu código:
+  let numero = parseInt(n.toString().charAt(0));
+  if (numero === 9) return true;
+  else {
+    return false;
+  }
 }
-
 
 export function todosIguales(arreglo) {
- // Tu código:
-  //should return true if all the elements of the array are equal
-  return arreglo.every(function(elemento){
-    return elemento === arreglo[0];
-  }
-  );
-} 
-
-//NOT YET FINISHED
-export function mesesDelAño(array) {  
   // Tu código:
-  //should return an array with the names of the months
-  return array.map(function(elemento){
-    return elemento.toString().substring(0,3);
+  if (typeof arreglo) {
+    let primerElemento = arreglo[0];
+    return arreglo.every(function (elemento) {
+      return elemento === primerElemento;
+    });
   }
-  );
 }
 
+export function mesesDelAño(array) {
+  // Tu código:
+  let meses = [];
+  for (var i = 0; i < array.length; i++) {
+    if (
+      array[i] === "Marzo" ||
+      array[i] === "Noviembre" ||
+      array[i] === "Enero"
+    ) {
+      meses.push(array[i]);
+    }
+  }
+  if (
+    meses.includes("Marzo") &&
+    meses.includes("Noviembre") &&
+    meses.includes("Enero")
+  ) {
+    return meses;
+  } else {
+    return "No se encontraron los meses pedidos";
+  }
+}
 
 export function mayorACien(array) {
   // Tu código:
-  //should return an array with the numbers greater than 100
-  return array.filter(function(elemento){
-    return elemento > 100;
-  }
-  );
-}
-
-//NOT YET FINISHED
-export function breakStatement(numero) {
-  // Tu código:
-
-}
-
-//NOT YET FINISHED
-export function continueStatement(numero) {
-  // Tu código:
-  //should return an array with the values ​​resulting from adding 2 in each iteration when the iteration number is different from 5
-  return numero.map(function(elemento){
-    if(elemento === 5){
-      return elemento;
-    }else{
-      return elemento+2;
+  let mayor = [];
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] > 100) {
+      mayor.push(array[i]);
     }
   }
-  );
+  return mayor;
 }
 
+export function breakStatement(numero) {
+  // Tu código:
+  let i = 0;
+  const array = [];
 
+  do {
+    i++;
+    numero += 2;
+    if (numero === i) {
+      break;
+    } else {
+      array.push(numero);
+    }
+  } while (i < 10); //devolver 10 numeros en el array
+  if (array.length === 10) {
+    return array;
+  }
+  return "Se interrumpió la ejecución";
+}
 
+export function continueStatement(numero) {
+  // Tu código:
+
+  const array = [];
+  let sumar = numero
+  for(let i=0; i<10; i++){
+  if(i===5){
+    continue; //evita el 5
+  }else{
+    sumar=sumar + 2
+    array.push(sumar);
+  }
+}
+return array;
+}
