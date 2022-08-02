@@ -1,44 +1,41 @@
+import React from "react";
 import { useForm } from "../hooks/useForm";
 
 export const TodoAdd = ({ onNewTodo }) => {
+  const { formState, onInputChange, onResetForm } = useForm({ description: "" });
 
-  //quinto traemos el use form , comenzamos a destructurar, definimos onchange y onsubmit
-    const { formState, onInputChange, onResetForm } = useForm({
-        description: ''
-    });
-    const { description } = formState;
-    const onFormSubmit = ( event ) => {
-        event.preventDefault();
-        if ( description.length <= 1 ) return;
+  const { description } = formState;
 
-        const newTodo = {
-            id: new Date().getTime(),
-            done: false,
-            description: description,
-        }
+  const onFormSubmit = (event) => {
+    event.preventDefault();
+    if(description.length <= 1) return;
 
-        onNewTodo(newTodo);
-        onResetForm();
-    }
+    const newTodo = {
+        id: new Date().getTime(),
+        description: description,
+        done: false,
+    }  
+    
+    onNewTodo(newTodo);
+    onResetForm();
+  }
 
-
-    return (
-        <form onSubmit={ onFormSubmit }>
-            <input 
-                type="text" 
-                placeholder="Tarea.."
-                className="form-control"
-                name="description"
-                value={ description }
-                onChange={ onInputChange }
-            />
-
-            <button 
-                type="submit"
-                className="btn btn-outline-primary mt-2"
-            >
-                Agregar
-            </button>
-        </form>
-    )
-}
+  return (
+    <form onSubmit={onFormSubmit}>
+      <input
+        type="text"
+        placeholder="Tarea..."
+        className="form-control"
+        value={description}
+        name='description'
+        onChange={onInputChange}
+      />
+      <button
+        className="btn btn-outline-primary mt-2" 
+        type="submit"
+      >
+        Agregar
+      </button>
+    </form>
+  );
+};

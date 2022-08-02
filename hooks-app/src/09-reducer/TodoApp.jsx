@@ -1,32 +1,32 @@
-import { useTodos } from "../Hooks/useTodos";
-import { TodoList } from "./TodoList";
-import { TodoAdd } from "./TodoAdd";
+import React from 'react'
+import { useTodo } from '../hooks/useTodo'
+import { TodoAdd } from './TodoAdd'
+import { TodoList } from './TodoList'
+
 
 export const TodoApp = () => {
-  const { todos, handleDeleteTodo, handleToggleTodo, handleNewTodo, handleEditTodo} =
-    useTodos();
-//cuarto traemos el hook del usetodos con la funcionalidad de cada boton e input para irlos definiendo, a su vez agregamos en cada etiqueta los que van a usarse dentro de las mismas
+
+   const { todos, todoCount, pendingTodoCount, handleDeleteTodo, handleToggleTodo, handleNewTodo} = useTodo();     
+
   return (
     <>
-      <h2>TodoApp</h2>
-      <hr />
-
-      <section className="row">
-        <div className="col-7">
-          <TodoList
-            todos={todos}
-            onDeleteTodo={handleDeleteTodo}
-            onToggleTodo={handleToggleTodo}
-            onEditTodo={handleEditTodo}
-          />
-        </div>
-
-        <div className="col-5">
-          <h4>Agregar TODO</h4>
-          <hr />
-          <TodoAdd onNewTodo={handleNewTodo} />
-        </div>
-      </section>
+        <h2>TodoApp: {todoCount}, pendientes: {pendingTodoCount}</h2>
+        <hr />
+        
+        <section className="row">
+            <div className="col-7">                
+                <TodoList 
+                    todos={todos}  
+                    onDeleteTodo={handleDeleteTodo}
+                    onToggleTodo={handleToggleTodo}
+                />
+            </div>
+            <div className="col-5">
+                <h4>Agregar TODO</h4> 
+                <hr />                
+                <TodoAdd onNewTodo={handleNewTodo} />
+            </div>
+        </section>
     </>
-  );
-};
+  )
+}

@@ -1,21 +1,14 @@
 import React from "react";
 import { TodoItem } from "./TodoItem";
 
-export const TodoList = ({ todos = [], onDeleteTodo, onToggleTodo, onEditTodo}) => {
-  //sexto traemos los todos que habiamos agregado en todoapp
+export const TodoList = ({todos = [], onDeleteTodo, onToggleTodo}) => {
+  
   return (
     <ul className="list-group">
-        {
-            todos.map( todo => (
-                <TodoItem 
-                  key={ todo.id } 
-                  todo={ todo } 
-                  onDeleteTodo={ onDeleteTodo } 
-                  onToggleTodo={ onToggleTodo }
-                  onEditTodo={onEditTodo}
-                />
-            ))
-        }
+      {todos.map((todo) => (
+        // TODO: Crear <TodoItem todo={todo} />
+        <TodoItem key={todo.id} todo={todo} onDeleteTodo={onDeleteTodo} onToggleTodo={onToggleTodo}/>
+      ))}
     </ul>
-  )
-}
+  );
+};
