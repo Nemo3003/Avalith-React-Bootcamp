@@ -7,8 +7,7 @@ const init = () => {
 
 export const useTodo = () => {
 
-    const [todos, dispatch] = useReducer(todoReducer, [], init)
-    
+    const [todos, dispatch] = useReducer(todoReducer, [], init)    
     
     useEffect(() => {
         localStorage.setItem('todos', JSON.stringify(todos))        

@@ -1,22 +1,32 @@
 import React from 'react'
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Link, Navigate, Route, Routes } from 'react-router-dom'
 import { AboutPage } from './AboutPage'
-import Error404 from './Error404'
-import { Login } from './Login'
+import { UserProvider } from './context/UserProvider'
+import { HomePage } from './HomePage'
+import { LoginPage } from './LoginPage'
+import { NavBar } from './NavBar'
 
 export const MainApp = () => {
   return (
     <>
-    <h3>Main</h3>
-    <hr />
-    <Router>
-       <Routes> 
-          <Route path="/" element={<MainApp />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="*" element={<Error404 />} />
-       </Routes>
-    </Router>
+        <UserProvider> 
+            <h2>MainApp</h2>
+            <hr />
+
+            <BrowserRouter>
+
+                <NavBar />
+
+                <Routes>                
+                    <Route path='/login' element={ <LoginPage />} />
+                    <Route path='/about' element={ <AboutPage />} />
+                    <Route path='/' element={ <HomePage />} />
+
+                    <Route path='*' element={ <Navigate to={'/'} />} />
+                </Routes> 
+                
+            </BrowserRouter>
+        </UserProvider> 
     </>
   )
 }
