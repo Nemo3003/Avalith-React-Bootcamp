@@ -14,6 +14,7 @@ import { HookCallBack } from './07-HookCallBack/HookCallBack'
 import { Tarea } from './08-Tarea/Tarea'
 //import './09-reducer/IntroReducer'
 import {TodoApp} from './09-reducer/TodoApp'
+import { MainApp } from './10-useContext/MainApp'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -42,8 +43,9 @@ function App() {
       <hr />
       <HookCallBack/>
       <hr />
-      <Tarea/>*/}
-      <TodoApp/>
+      <Tarea/>
+      <TodoApp/>*/}
+      <MainApp/>
     </div>
   )
 }
