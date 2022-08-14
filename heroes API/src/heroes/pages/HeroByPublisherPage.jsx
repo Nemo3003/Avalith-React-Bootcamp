@@ -8,7 +8,10 @@ export const HeroByPublisherPage = () => {
     <>
         <h1>Hero By Publisher Page</h1>
         <p>This is the Hero By Publisher Page</p>
+        <div>
         <AllHeroes/>
+        </div>
+        
     </>
   )
 }

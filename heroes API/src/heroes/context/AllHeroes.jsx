@@ -24,6 +24,7 @@ export const AllHeroes = () => {
     <BiLoaderCircle size={170}/>
     </span>
   ) : (
+    
     <section className="cards">
       {heros.map((hero) => (
         <Heroes key={hero.id} hero={hero} />
