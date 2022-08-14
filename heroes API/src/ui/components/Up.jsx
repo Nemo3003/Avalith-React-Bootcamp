@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-scroll";
-import up from "../../../assets/up.png";
+import up from "../../../assets/up.svg";
 
 export const Up = () => {
   return (

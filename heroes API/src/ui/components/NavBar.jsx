@@ -50,6 +50,12 @@ export const Navbar = () => {
                     </NavLink>
                     <NavLink 
                         className={isActive} 
+                        to="/all"
+                    >
+                        All
+                    </NavLink>
+                    <NavLink 
+                        className={isActive} 
                         to="/search"
                     >
                         Search

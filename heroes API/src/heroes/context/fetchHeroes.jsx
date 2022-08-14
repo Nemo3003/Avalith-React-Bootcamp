@@ -1,10 +1,10 @@
-import React from 'react'
+
 import React, { useState, useEffect } from "react";
-import { Link } from "@reach/router";
+import { Link } from "react-router-dom";
 
 export const fetchHeroes = ({id}) => {
     const [hero, setHero] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchHeroData = async () => {
