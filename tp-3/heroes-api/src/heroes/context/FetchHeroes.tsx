@@ -9,7 +9,8 @@ export const FetchHeroes = ({ datas }: any) => {
         const FetchData = async ()=>{
             const response = await fetch(`https://akabab.github.io/superhero-api/api/${datas}.json`);
             const data = await response.json();
-            setHeroes(data);
+            //Show only 20 heroes
+            setHeroes(data.slice(0,20));
             setLoading(false);
         };
         FetchData();
