@@ -3,6 +3,7 @@ import { AuthContext } from "./AuthContext"
 import {Type as AuthType} from '../types/type'
 import {AuthReducer} from './AuthReducer'
 
+
 const INITIAL_STATE = {
     logged: false,
     user: null
