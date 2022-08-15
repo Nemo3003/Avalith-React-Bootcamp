@@ -4,6 +4,7 @@ import { FetchHeroes } from './heroes/context/FetchHeroes'
 import './heroes/scss/styles.css'
 import { HeroByPublisherPage } from './heroes/pages/HeroByPublisherPage'
 import { Navbar } from './components/Navbar'
+import {Test} from './heroes/pages/testHeroe'
 
 
 function App() {

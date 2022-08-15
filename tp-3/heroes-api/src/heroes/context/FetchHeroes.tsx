@@ -19,11 +19,11 @@ export const FetchHeroes = ({ datas }: any) => {
 
     
     return loading? (<p>Loading...</p>) : (
-        <div className="container text-center flex-added">
+        <div className=" text-center flex-added">
             <h1>Super Heroes</h1>
             <ul>
                 {Heroes.map(hero => (
-                    <div className=" card mb-3">
+                    <div className="card mb-3">
                     <h2>{hero.name}</h2>
                     <p>First Appearance : {hero.biography.firstAppearance}</p>
                     <p>Publisher : {hero.biography.publisher}</p>
