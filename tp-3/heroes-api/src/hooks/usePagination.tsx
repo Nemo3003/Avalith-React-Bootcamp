@@ -8,7 +8,7 @@ export const usePagination = (
   decrement:any,
   reset:any,
   setCounter:any
-) => {
+) => {            
   const [itemsPerPage] = useState(ipp);
 
   const [pageNumberLimit] = useState(5);

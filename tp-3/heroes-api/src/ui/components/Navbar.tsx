@@ -39,15 +39,6 @@ export const Navbar = () => {
             <NavLink className={isActive} to="/index">
               Home
             </NavLink>
-
-            <NavLink className={isActive} to="/index?q=Marvel%20Comics">
-              Marvel
-            </NavLink>
-
-            <NavLink className={isActive} to="/index?q=DC%20Comics">
-              DC
-            </NavLink>
-
             <NavLink className={isActive} to="/search">
               Search
             </NavLink>

@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import LazyLoad from "react-lazyload";  
+
 
 export const HeroCard = ({ id, name, images, slug, biography }:any) => {
   const { lg } = images;
@@ -8,7 +10,9 @@ export const HeroCard = ({ id, name, images, slug, biography }:any) => {
   return (
     <li className="card_container animate__animated animate__fadeIn">
       <div className="card_container_header">
+      <LazyLoad offset={1200}>
         <img src={lg} alt={name}></img>
+        </LazyLoad>
       </div>
 
       <div className="card_container_information">
