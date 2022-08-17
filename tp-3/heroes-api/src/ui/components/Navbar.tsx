@@ -2,7 +2,6 @@ import { useContext } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../auth/context/AuthContext";
 import { FaBars } from "react-icons/fa";
-import "./navbar.css";
 import { useState } from "react";
 
 export const Navbar = () => {

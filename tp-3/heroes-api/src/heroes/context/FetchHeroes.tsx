@@ -1,3 +1,7 @@
 import { createContext } from "react";
 
-export const HeroesContext = createContext(null);
+interface ContextOk {
+    context: string;
+}
+
+export const FetchHeroes = createContext();

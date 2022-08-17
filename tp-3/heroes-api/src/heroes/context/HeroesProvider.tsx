@@ -1,7 +1,7 @@
 import { useReducer } from "react";
 import { useFetch } from "../../hooks/useFetch";
 import { types } from "../types/types";
-import { HeroesContext } from "./FetchHeroes";
+import { FetchHeroes } from "./FetchHeroes";
 import { heroesReducer } from "./HeroesReducer";
 import { getAllPublishers } from "../helpers/getAllPublishers";
 import { getHeroesByName } from "../helpers/getHeroesByName";
@@ -21,7 +21,7 @@ export const HeroesProvider = ({ children }:any) => {
 
   const { heroes, loading, actualPublisher, nameSearch, heroId }:any = heroesState;
 
-  const { dataArray } = useFetch(
+  const { dataArray }:any = useFetch(
     "https://akabab.github.io/superhero-api/api/all.json",
     dispatch,
     actualPublisher
@@ -51,7 +51,7 @@ export const HeroesProvider = ({ children }:any) => {
   };
 
   return (
-    <HeroesContext.Provider
+    <FetchHeroes.Provider
       value={{
         heroes,
         searchResults,
@@ -65,6 +65,6 @@ export const HeroesProvider = ({ children }:any) => {
       }}
     >
       {children}
-    </HeroesContext.Provider>
+    </FetchHeroes.Provider>
   );
 };

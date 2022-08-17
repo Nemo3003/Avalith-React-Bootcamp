@@ -2,11 +2,10 @@ import React from "react";
 import { useEffect } from "react";
 import { useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { HeroesContext } from "../context/FetchHeroes";
-import "./HeroPage.css";
+import { FetchHeroes } from "../context/FetchHeroes";
 
 export const HeroPage = () => {
-  const { handleHeroId, searchHeroId }:any = useContext(HeroesContext);
+  const { handleHeroId, searchHeroId }:any = useContext(FetchHeroes);
   const { heroId } = useParams();
 
   const navigate = useNavigate();

@@ -1,6 +1,6 @@
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import { LoginPage } from "../auth/pages/LoginPage";
+import { Login } from "../auth/pages/Login";
 import { HeroesRoutes } from "../heroes/routes/HeroesRoutes";
 import { PrivateRoutes } from "./PrivateRoutes";
 import { PublicRoutes } from "./PublicRoutes";
@@ -13,7 +13,7 @@ export const AppRouter = () => {
           path="login"
           element={
             <PublicRoutes>
-              <LoginPage></LoginPage>
+              <Login></Login>
             </PublicRoutes>
           }
         ></Route>
