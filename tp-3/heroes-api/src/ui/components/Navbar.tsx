@@ -21,8 +21,8 @@ export const Navbar = () => {
   };
 
   return (
-    <header className="header_container">
-      <div className="header_container_logo">
+    <header className="container">
+      <div className="container_logo">
         <Link className="" to="/">
           HeroesApp
         </Link>
@@ -34,7 +34,7 @@ export const Navbar = () => {
           sidebar ? "header_container_nav sidebar-open" : "header_container_nav"
         }
       >
-        <ul className="header_container_nav_list">
+        <ul className="container_nav_list">
           <li>
             <NavLink className={isActive} to="/index">
               Home

@@ -4,12 +4,11 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { HeroList } from "../components/HeroList";
 import { FetchHeroes } from "../context/FetchHeroes";
 import queryString from "query-string";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export const HeroByPublisherPage = () => {
   const { heroes , loading, publishers, handlePublisher, actualPublisher }:any =
     useContext(FetchHeroes);
-
   const navigate = useNavigate();
   const location = useLocation();
   const { q = "" } = queryString.parse(location.search);
