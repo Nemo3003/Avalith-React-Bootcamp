@@ -131,3 +131,12 @@ body{
 .root{
   border: 1px solid red;
 }
+ul{
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+li{
+  cursor: pointer;
+}

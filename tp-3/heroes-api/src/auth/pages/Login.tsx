@@ -29,14 +29,16 @@ export const Login = ()=>{
 
     <div className="panel">
         <form 
-        action="" 
+
         method="post"
         onSubmit={()=> onLogin()}
         >
 
         <div className="panel-group">
             <input 
+            id="textbox"
             className="input" 
+            name="username"
             type="text"
             value= {username}
             onChange={onInputChange}
@@ -44,14 +46,13 @@ export const Login = ()=>{
             <span className="border"></span>
             <label>Username</label>
         </div>
-
+        <div className="panel-group">
+            <input className="input" type="password" required/>
+            <span className="border"></span>
+            <label>Password</label>
+        </div>
         <button type="submit">Login</button>
         </form>
-
-        <div className="panel-footer">
-            <p><a href="#">Forgotten password?</a></p>
-            <p>Not a member? <a href="#">Sign up now</a></p>
-        </div>
     </div>
 </div>
 )}
