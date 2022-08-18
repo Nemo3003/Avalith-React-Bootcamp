@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { FetchHeroes } from "../context/FetchHeroes";
+import "../scss/heroes.css";
 
 export const HeroPage = () => {
   const { handleHeroId, searchHeroId }:any = useContext(FetchHeroes);
@@ -30,22 +31,15 @@ export const HeroPage = () => {
       images,
     } = searchHeroId;
     return (
+      <>
       <section className="hero_container">
-        <img
-          className="img-background animate__animated animate__fadeIn"
-          src={images.lg}
-          alt={name}
-        ></img>
+       
+      <div className="hero_container_upper">
+        <article className="hero-information">
 
-        <article className="hero_container_information">
-          <h3>{name}</h3>
-          <ul className="hero_container_information_list">
-            <li>
-              <b>Slug: </b>
-              {slug}
-            </li>
-
-            <li>
+            <div>
+            <b>Slug: </b>
+              {slug} <br />
               <b>PowerStats: </b>
               <p>Intelligence: {powerstats.intelligence}</p>
               <p>Strength: {powerstats.strength}</p>
@@ -53,9 +47,11 @@ export const HeroPage = () => {
               <p>Durability: {powerstats.durability}</p>
               <p>Power: {powerstats.power}</p>
               <p>Combat: {powerstats.combat}</p>
-            </li>
-
-            <li>
+           
+            </div>
+            <hr />
+            <div>
+           
               <b>Appearance: </b>
               <p>Gender: {appearance.gender}</p>
               <p>Race: {appearance.race}</p>
@@ -63,40 +59,53 @@ export const HeroPage = () => {
               <p>Weight: {appearance.weight[1]}</p>
               <p>Eye color: {appearance.eyeColor}</p>
               <p>Hair color: {appearance.hairColor}</p>
-            </li>
-
-            <li>
-              <b>Biography: </b>
-              <p>Fullname: {biography.fullName}</p>
-              <p>alter egos: {biography.alterEgos}</p>
-              <p>place Of Birth: {biography.placeOfBirth}</p>
-              <p>first Appearance: {biography.firstAppearance}</p>
-              <p>publisher: {biography.publisher}</p>
-              <p>alignment: {biography.alignment}</p>
-            </li>
-
-            <li>
-              <b>Works: </b>
-              <p>occupation: {work.occupation}</p>
-              <p>base: {work.base}</p>
-            </li>
-
-            <li>
-              <b>Connections: </b>
-              <p>group Affiliation: {connections.groupAffiliation}</p>
-              <p>Relatives: {connections.relatives}</p>
-            </li>
-
-            <img
+            
+            </div>
+            <div>
+          <h3>{name}</h3>
+          <img
               src={images.md}
               alt={name}
-              className="img-list animate__animated animate__fadeIn"
+              className="img-list"
             />
-          </ul>
+            </div>
+            <hr />
+            <div>
+            
+              <b>Biography: </b>
+              <p>Fullname: {biography.fullName}</p>
+              <p>Alter egos: {biography.alterEgos}</p>
+              <p>Place Of Birth: {biography.placeOfBirth}</p>
+              <p>First Appearance: {biography.firstAppearance}</p>
+              <p>Publisher: {biography.publisher}</p>
+              <p>Alignment: {biography.alignment}</p>
+            
+            </div>
+            <hr />
+            <div>
+           
+              <b>Works: </b>
+              <p>Occupation: {work.occupation}</p>
+              <p>Base: {work.base}</p>
+            
+            </div>
+            <hr />
+              <b>Connections: </b>
+              <p>Group Affiliation: {connections.groupAffiliation}</p>
+              <p>Relatives: {connections.relatives}</p>
+              <hr />
 
-          <button onClick={onNavigateBack}>Back...</button>
+            
+        
+         
+          
         </article>
+        </div>
       </section>
+      <footer>
+      <button onClick={onNavigateBack}>Back...</button>
+      </footer>
+      </>
     );
   }
 };

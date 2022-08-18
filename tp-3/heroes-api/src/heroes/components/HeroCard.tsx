@@ -1,6 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import LazyLoad from "react-lazyload";  
+import { Link } from "react-router-dom"; 
+import "../scss/heroes.css";
 
 
 export const HeroCard = ({ id, name, images, slug, biography }:any) => {
@@ -8,20 +8,18 @@ export const HeroCard = ({ id, name, images, slug, biography }:any) => {
   const { fullName, publisher } = biography;
 
   return (
-    <li className="card_container animate__animated animate__fadeIn">
-      <div className="card_container_header">
-      <LazyLoad offset={1200}>
+    <li className="card_container_one ">
+      <div className="card__header">
+      <Link to={`/hero/${id}`}>
         <img src={lg} alt={name}></img>
-        </LazyLoad>
+      </Link>
       </div>
-
-      <div className="card_container_information">
+      <div className="card_information">
         <h2>{name}</h2>
-        <h3>{slug}</h3>
         <h4>{publisher}</h4>
         <h5>{fullName}</h5>
 
-        <Link to={`/hero/${id}`} className="button-card">
+        <Link to={`/hero/${id}`} className="btn btn-blue">
           LEARN MORE
         </Link>
       </div>

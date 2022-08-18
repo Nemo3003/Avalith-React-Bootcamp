@@ -4,4 +4,4 @@ interface ContextOk {
     context: string;
 }
 
-export const FetchHeroes = createContext();
+export const FetchHeroes = createContext<any>(null);

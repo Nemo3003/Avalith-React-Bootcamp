@@ -5,6 +5,7 @@ import { HeroList } from "../components/HeroList";
 import { FetchHeroes } from "../context/FetchHeroes";
 import queryString from "query-string";
 import { useEffect, useState } from "react";
+import "../scss/heroes.css"
 
 export const HeroByPublisherPage = () => {
   const { heroes , loading, publishers, handlePublisher, actualPublisher }:any =
@@ -23,8 +24,8 @@ export const HeroByPublisherPage = () => {
 
   return (
     <>
-      <section className="index_container">
-        <form className="index_container_form">
+      <section className="heroes-section">
+        <form className="heroes-form">
           <h2>SELECT YOUR FAVORITE PUBLISHER</h2>
           <select
             onChange={(e) => handleSelectOption(e)}
@@ -41,8 +42,8 @@ export const HeroByPublisherPage = () => {
       </section>
 
       {loading ? (
-        <div className="loader_wrapper">
-          <div className="lds-ellipsis">
+        <div className="heroes-wrapper">
+          <div className="heroes-aws">
             <div></div>
             <div></div>
             <div></div>

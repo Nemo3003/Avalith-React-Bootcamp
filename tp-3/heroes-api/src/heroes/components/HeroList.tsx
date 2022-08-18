@@ -3,6 +3,7 @@ import { useCounter } from "../../hooks/useCounter";
 import { usePagination } from "../../hooks/usePagination";
 import { HeroCard } from "./HeroCard";
 import { Pagination } from "./Pagination";
+import "../scss/heroes.css";
 
 interface Publisher {
     publisher: string|number;
@@ -31,14 +32,19 @@ export const HeroList = ({ publisher }:Publisher) => {
 
   return (
     <>
-      <section className="section_cards">
+      <section className="section-heroes-cards">
         <ul className="cards_container">
           {currentItems.map((publish:any) => (
             <HeroCard key={publish.id} {...publish}></HeroCard>
           ))}
         </ul>
 
-        <Pagination
+       
+      </section>
+      <footer>
+        &copy; {new Date().getFullYear()} <p>Ulises M Melgarejo</p>
+        
+      <Pagination
           handleNextPage={handleNextPage}
           handlePrevPage={handlePrevPage}
           renderPageNumbers={renderPageNumbers}
@@ -47,7 +53,7 @@ export const HeroList = ({ publisher }:Publisher) => {
           currentPage={counter}
           pages={pages}
         ></Pagination>
-      </section>
+      </footer>
     </>
   );
 };

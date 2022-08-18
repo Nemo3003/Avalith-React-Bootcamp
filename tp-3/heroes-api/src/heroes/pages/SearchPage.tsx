@@ -32,10 +32,10 @@ export const SearchPage = () => {
 
   return (
     <>
-      <section className="search_container">
+      <section className="search-container">
         <h1>Search your favorite HERO</h1>
 
-        <form onSubmit={onSearchSubmit} className="search_container_form">
+        <form onSubmit={onSearchSubmit} className="search-container-form">
           <input
             type="text"
             placeholder="Search a hero"
@@ -49,18 +49,18 @@ export const SearchPage = () => {
           <button className="">Search</button>
         </form>
 
-        <article className="search_container_list">
+        <article className="search-container-list">
           <h4>Results</h4>
 
           <div
-            className="search_container_searchhero"
+            className="search-hero"
             style={{ display: q === "" ? "" : "none" }}
           >
             Search a hero
           </div>
 
           {!searchResults.length && q !== "" && (
-            <div className="search_container_nohero">
+            <div className="search-no-hero">
               No hero with <b>{q}</b>
             </div>
           )}

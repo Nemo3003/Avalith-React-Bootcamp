@@ -3,6 +3,7 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../auth/context/AuthContext";
 import { FaBars } from "react-icons/fa";
 import { useState } from "react";
+import "./functions.css"
 
 export const Navbar = () => {
   const navigate = useNavigate();
@@ -22,7 +23,7 @@ export const Navbar = () => {
 
   return (
     <header className="container">
-      <div className="container_logo">
+      <div className="container-logo">
         <Link className="" to="/">
           HeroesApp
         </Link>
@@ -30,9 +31,7 @@ export const Navbar = () => {
       </div>
 
       <nav
-        className={
-          sidebar ? "header_container_nav sidebar-open" : "header_container_nav"
-        }
+        className="navigation"
       >
         <ul className="container_nav_list">
           <li>
