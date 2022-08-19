@@ -3,5 +3,7 @@ export const getHeroesByName = (name = "", arr:any[]) => {
   
     if (name.length === 0) return [];
   
-    return arr.filter((hero) => hero.name.toLowerCase().includes(name));
+    return (
+      arr.filter((hero) => 
+        hero.name.toLowerCase().includes(name)));
   };

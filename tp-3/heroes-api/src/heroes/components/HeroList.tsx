@@ -2,7 +2,7 @@ import React from "react";
 import { useCounter } from "../../hooks/useCounter";
 import { usePagination } from "../../hooks/usePagination";
 import { HeroCard } from "./HeroCard";
-import { Pagination } from "./Pagination";
+import { PageList } from "./PageList";
 import "../scss/heroes.css";
 
 interface Publisher {
@@ -38,13 +38,12 @@ export const HeroList = ({ publisher }:Publisher) => {
             <HeroCard key={publish.id} {...publish}></HeroCard>
           ))}
         </ul>
-
        
       </section>
       <footer>
         &copy; {new Date().getFullYear()} <p>Ulises M Melgarejo</p>
         
-      <Pagination
+      <PageList
           handleNextPage={handleNextPage}
           handlePrevPage={handlePrevPage}
           renderPageNumbers={renderPageNumbers}
@@ -52,7 +51,7 @@ export const HeroList = ({ publisher }:Publisher) => {
           pageIncrementBtn={pageIncrementBtn}
           currentPage={counter}
           pages={pages}
-        ></Pagination>
+        />
       </footer>
     </>
   );

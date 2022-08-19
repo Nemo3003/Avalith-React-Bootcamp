@@ -4,6 +4,7 @@ import { SearchPage } from "../pages/SearchPage";
 import { HeroPage } from "../pages/HeroPage";
 import { HeroesProvider } from "../context/HeroesProvider";
 import { HeroByPublisherPage } from "../pages/HeroByPublisherPage";
+import { NotAuth } from "../../auth/pages/NotAuth";
 
 export const HeroesRoutes = () => {
   return (
@@ -15,14 +16,18 @@ export const HeroesRoutes = () => {
           <Routes>
             <Route
               path="/index"
-              element={<HeroByPublisherPage></HeroByPublisherPage>}
-            ></Route>
+              element={<HeroByPublisherPage/>}
+            />
+            <Route
+              path="/notauth"
+              element={<NotAuth/>}
+            />
 
-            <Route path="/search" element={<SearchPage></SearchPage>}></Route>
-            <Route path="/hero/:heroId" element={<HeroPage></HeroPage>}></Route>
+            <Route path="/search" element={<SearchPage/>}/>
+            <Route path="/hero/:heroId" element={<HeroPage/>}/>
 
-            {/* Mas... */}
-            <Route path="/" element={<Navigate to="/index"></Navigate>}></Route>
+
+            <Route path="/" element={<Navigate to="/index"/>}/>
           </Routes>
         </HeroesProvider>
       </main>

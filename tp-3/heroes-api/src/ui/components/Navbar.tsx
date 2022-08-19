@@ -10,9 +10,6 @@ export const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
   const [sidebar, setSidebar] = useState(false);
 
-  const isActive = ({ isActive }:any) =>
-    `nav-item nav-link ${isActive ? "active" : ""}`;
-
   const onLogout = () => {
     logout();
 
@@ -32,14 +29,15 @@ export const Navbar = () => {
       </div>
 
       <nav
-        className="navigation"
+        className="navigation navbar navbar-primary bg-primary"
       >
-        <ul className="container_nav_list">
+        <ul className="navbar-brand">
           <li>
-            <NavLink className={isActive} to="/index">
+            <NavLink to="/index">
               Home
             </NavLink>
-            <NavLink className={isActive} to="/search">
+            <br />
+            <NavLink  to="/search">
               Search
             </NavLink>
           </li>

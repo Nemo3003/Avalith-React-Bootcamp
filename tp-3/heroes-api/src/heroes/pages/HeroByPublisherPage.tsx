@@ -26,12 +26,12 @@ export const HeroByPublisherPage = () => {
     <>
       <section className="heroes-section">
         <form className="heroes-form">
-          <h2>SELECT YOUR FAVORITE PUBLISHER</h2>
+          <h2>SELECT A PUBLISHER</h2>
           <select
             onChange={(e) => handleSelectOption(e)}
             value={actualPublisher}
           >
-            <option value="ALL">All</option>
+            <option value="all">All</option>
             {publishers.map((publish:any) => (
               <option key={publish} value={publish}>
                 {publish}

@@ -1,5 +1,5 @@
 export const getHeroesByPublishers = (publisher:String, arr:any[]) => {
-    if (publisher === "ALL" || publisher === "") {
+    if (publisher === "all" || publisher === "") {
       return arr;
     } else {
       const finalArray = arr.filter(

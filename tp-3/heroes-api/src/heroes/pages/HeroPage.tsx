@@ -93,15 +93,11 @@ export const HeroPage = () => {
               <p>Relatives: {connections.relatives}</p>
               <hr />
 
-            
-        
-         
-          
         </article>
         </div>
       </section>
       <footer>
-      <button onClick={onNavigateBack}>Back...</button>
+      <button onClick={onNavigateBack}>STEP BACK!</button>
       </footer>
       </>
     );
