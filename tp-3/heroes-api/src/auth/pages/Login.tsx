@@ -1,13 +1,16 @@
 import React from "react";
+import useState from "react";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { useForm } from "../../hooks/useForm";
+import Swal from 'sweetalert2';
 import "./scss/login.css"
 
 export const Login = ()=>{
     const { login } = useContext(AuthContext);
     const navigate = useNavigate();
+ 
   
     const { formState, onInputChange } = useForm ({
       username: "",
@@ -22,17 +25,18 @@ export const Login = ()=>{
       navigate("/", {
         replace: true,
       });
+      {Swal.fire(
+        'You have logged in!',
+        'Take a look!',
+        'success'
+      )}
     };
   
     return(
 <div className="container">
 
     <div className="panel">
-        <form 
-
-        method="post"
-        onSubmit={()=> onLogin()}
-        >
+        <form method="post"onSubmit={()=> onLogin()}>
 
         <div className="panel-group">
             <input 
@@ -53,6 +57,7 @@ export const Login = ()=>{
         </div>
         <button type="submit">Login</button>
         </form>
+        
     </div>
 </div>
 )}

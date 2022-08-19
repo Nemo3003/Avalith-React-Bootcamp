@@ -36,7 +36,6 @@ export const HeroPage = () => {
        
       <div className="hero_container_upper">
         <article className="hero-information">
-
             <div>
             <b>Slug: </b>
               {slug} <br />
@@ -71,7 +70,6 @@ export const HeroPage = () => {
             </div>
             <hr />
             <div>
-            
               <b>Biography: </b>
               <p>Fullname: {biography.fullName}</p>
               <p>Alter egos: {biography.alterEgos}</p>

@@ -3,7 +3,7 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../auth/context/AuthContext";
 import { FaBars } from "react-icons/fa";
 import { useState } from "react";
-import "./functions.css"
+import "../../heroes/scss/navbar.css"
 
 export const Navbar = () => {
   const navigate = useNavigate();
@@ -19,15 +19,16 @@ export const Navbar = () => {
     navigate("/login", {
       replace: true,
     });
+    
   };
+  
 
   return (
     <header className="container">
       <div className="container-logo">
         <Link className="" to="/">
-          HeroesApp
+          HEROES APP
         </Link>
-        <FaBars id="bars" onClick={() => setSidebar(!sidebar)}></FaBars>
       </div>
 
       <nav
