@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export const usePagination = (
+export const useDetails = (
   arr:any,
   ipp:any,
   counter:any,
@@ -35,11 +35,6 @@ export const usePagination = (
     if (number < maxPageNumberLimit + 1 && number > minPageNumberLimit) {
       return (
         <li
-          className={
-            counter === number
-              ? "pagination-page pagination-page-active"
-              : "pagination-page "
-          }
           key={number * 154}
           id={number}
           onClick={handleClick}
@@ -63,6 +58,7 @@ export const usePagination = (
       setMaxPageNumberLimit(maxPageNumberLimit + pageNumberLimit);
       setMinPageNumberLimit(minPageNumberLimit + pageNumberLimit);
     }
+
   };
 
   const handlePrevPage = () => {
@@ -77,7 +73,7 @@ export const usePagination = (
 
   if (pages.length > maxPageNumberLimit) {
     pageIncrementBtn = (
-      <li className="pagination-button" onClick={() => handleNextPage()}>
+      <li onClick={() => handleNextPage()}>
         &hellip;
       </li>
     );
@@ -87,7 +83,7 @@ export const usePagination = (
 
   if (minPageNumberLimit >= 1) {
     pageDecrementBtn = (
-      <li className="pagination-button" onClick={() => handlePrevPage()}>
+      <li  onClick={() => handlePrevPage()}>
         &hellip;
       </li>
     );

@@ -17,9 +17,9 @@ const initialState = {
 };
 
 export const HeroesProvider = ({ children }:any) => {
-  const [heroesState, dispatch] = useReducer(heroesReducer, initialState);
+  const [heroeState, dispatch] = useReducer(heroesReducer, initialState);
 
-  const { heroes, loading, actualPublisher, nameSearch, heroId }:any = heroesState;
+  const { heroes, loading, actualPublisher, nameSearch, heroId }:any = heroeState;
 
   const { dataArray }:any = useFetch(
     "https://akabab.github.io/superhero-api/api/all.json",
@@ -45,7 +45,6 @@ export const HeroesProvider = ({ children }:any) => {
   const handleSearchPage = (name :any ) => {
     dispatch({ type: types.name, payload: name } );
   };
-
   const handleHeroId = (id :any) => {
     dispatch({ type: types.heroId, payload: id });
   };

@@ -1,6 +1,7 @@
 import { AppRouter } from "./routes/AppRoutes";
 import { AuthProvider } from "./auth/context/AuthProvider";
 import React, { useState } from 'react'
+
 import "../src/heroes/scss/styles.css"
 
 
@@ -41,6 +42,7 @@ export const App = () => {
       <AuthProvider>
         <AppRouter/>
       </AuthProvider>
+      
     <div className="after"></div>
     </div>
     </div>

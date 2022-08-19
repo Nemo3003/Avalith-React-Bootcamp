@@ -1,5 +1,5 @@
 import React from "react";
-
+//This component is used to get the navigation between pages
 export const PageList = ({
   renderPageNumbers,
   pageDecrementBtn,
@@ -11,12 +11,10 @@ export const PageList = ({
 }:any) => {
   return (
     <>
-      <section className="pagination_section">
-        <article className="pagination_container">
-          <ul className="pagination_container_list">
+      <div className="list-section">
+          <ul className="container-list-ul">
             <li>
               <button
-                className="pagination-button"
                 onClick={() => handlePrevPage()}
                 disabled={currentPage === pages[0] ? true : false}
               >
@@ -28,7 +26,6 @@ export const PageList = ({
             {pageIncrementBtn}
             <li>
               <button
-                className="pagination-button"
                 onClick={() => handleNextPage()}
                 disabled={currentPage === pages.length ? true : false}
               >
@@ -36,8 +33,7 @@ export const PageList = ({
               </button>
             </li>
           </ul>
-        </article>
-      </section>
+      </div>
     </>
   );
 };

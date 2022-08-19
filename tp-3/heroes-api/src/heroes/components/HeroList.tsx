@@ -1,6 +1,6 @@
 import React from "react";
 import { useCounter } from "../../hooks/useCounter";
-import { usePagination } from "../../hooks/usePagination";
+import { useDetails } from "../../hooks/useDetails";
 import { HeroCard } from "./HeroCard";
 import { PageList } from "./PageList";
 import "../scss/heroes.css";
@@ -20,7 +20,7 @@ export const HeroList = ({ publisher }:Publisher) => {
     handleNextPage,
     handlePrevPage,
     pages,
-  } = usePagination(
+  } = useDetails(
     publisher,
     20,
     counter,
@@ -32,6 +32,15 @@ export const HeroList = ({ publisher }:Publisher) => {
 
   return (
     <>
+    <PageList
+          handleNextPage={handleNextPage}
+          handlePrevPage={handlePrevPage}
+          renderPageNumbers={renderPageNumbers}
+          pageDecrementBtn={pageDecrementBtn}
+          pageIncrementBtn={pageIncrementBtn}
+          currentPage={counter}
+          pages={pages}
+        />
       <section className="section-heroes-cards">
         <ul className="cards_container">
           {currentItems.map((publish:any) => (

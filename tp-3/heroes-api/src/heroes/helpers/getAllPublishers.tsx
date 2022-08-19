@@ -1,15 +1,12 @@
 import React from "react";
 
-export const getAllPublishers = (arr:any) => {
+export const getAllPublishers = (publicAll:any) => {
   const publishers:any[]  = [];
-  for (let i = 0; i < arr.length; i++) {
+  for (let i = 0; i < publicAll.length; i++) {
     if (
-      !publishers.includes(arr[i].biography.publisher) &&
-      arr[i].biography.publisher !== null &&
-      arr[i].biography.publisher !== ""
-    ) {
-      publishers.push(arr[i].biography.publisher);
-    }
-  }
-  return publishers;
-};
+      !publishers.includes(publicAll[i].biography.publisher) &&
+      publicAll[i].biography.publisher !== null && publicAll[i].biography.publisher !== ""
+    ){
+      publishers.push(publicAll[i].biography.publisher);}}
+
+  return publishers;};

@@ -7,6 +7,7 @@ import { HeroByPublisherPage } from "../pages/HeroByPublisherPage";
 import { NotAuth } from "../../auth/pages/NotAuth";
 
 export const HeroesRoutes = () => {
+
   return (
     <>
       <Navbar></Navbar>
@@ -29,6 +30,7 @@ export const HeroesRoutes = () => {
 
             <Route path="/" element={<Navigate to="/index"/>}/>
           </Routes>
+     
         </HeroesProvider>
       </main>
     </>

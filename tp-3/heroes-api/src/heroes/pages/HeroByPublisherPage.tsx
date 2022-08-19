@@ -5,14 +5,15 @@ import { HeroList } from "../components/HeroList";
 import { FetchHeroes } from "../context/FetchHeroes";
 import queryString from "query-string";
 import { useEffect, useState } from "react";
+import { SpinningCircles  } from 'react-loading-icons'
 import "../scss/heroes.css"
 
 export const HeroByPublisherPage = () => {
   const { heroes , loading, publishers, handlePublisher, actualPublisher }:any =
     useContext(FetchHeroes);
   const navigate = useNavigate();
-  const location = useLocation();
-  const { q = "" } = queryString.parse(location.search);
+  const locationHero = useLocation();
+  const { q = "" } = queryString.parse(locationHero.search);
 
   useEffect(() => {
     handlePublisher(q);
@@ -29,27 +30,17 @@ export const HeroByPublisherPage = () => {
           <h2>SELECT A PUBLISHER</h2>
           <select
             onChange={(e) => handleSelectOption(e)}
-            value={actualPublisher}
-          >
+            value={actualPublisher}>
             <option value="all">All</option>
             {publishers.map((publish:any) => (
               <option key={publish} value={publish}>
                 {publish}
-              </option>
-            ))}
+              </option>))}
           </select>
         </form>
       </section>
-
       {loading ? (
-        <div className="heroes-wrapper">
-          <div className="heroes-aws">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
-        </div>
+        <SpinningCircles />
       ) : (
         <HeroList publisher={heroes}></HeroList>
       )}

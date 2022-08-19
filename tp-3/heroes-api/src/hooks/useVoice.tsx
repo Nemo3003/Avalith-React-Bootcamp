@@ -1,26 +1,16 @@
-import React from 'react';
+import React, {useState} from 'react';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
+import { HeroByPublisherPage } from '../heroes/pages/HeroByPublisherPage';
+import { SearchPage } from '../heroes/pages/SearchPage';
+import { BrowserRouter,Route, Link, Redirect } from 'react-router-dom';
 
-const Dictaphone = () => {
-  const {
-    transcript,
-    listening,
-    resetTranscript,
-    browserSupportsSpeechRecognition
-  } = useSpeechRecognition();
-
-  if (!browserSupportsSpeechRecognition) {
-    return <span>Browser doesn't support speech recognition.</span>;
-  }
-
-  return (
-    <div>
-      <p>Microphone: {listening ? 'on' : 'off'}</p>
-      <button onClick={SpeechRecognition.startListening}>Start</button>
-      <button onClick={SpeechRecognition.stopListening}>Stop</button>
-      <button onClick={resetTranscript}>Reset</button>
-      <p>{transcript}</p>
-    </div>
-  );
-};
-export default Dictaphone;
+export const UseVoice = () => {
+  return <div>
+    <BrowserRouter>
+      <div id="links">
+        <Link to="/index">HOME</Link>
+        <Link to="/search">SEARCH</Link>
+      </div>
+    </BrowserRouter>
+  </div>
+}

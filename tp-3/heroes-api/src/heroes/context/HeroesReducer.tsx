@@ -1,33 +1,30 @@
 import { types } from "../types/types";
 
 export const heroesReducer = (state = {}, action:any) => {
-  switch (action.type) {
-    case types.fetch:
-      return {
-        ...state,
-        heroes: action.payload,
-        loading: false,
-      };
+  if(action.type === types.fetch) {
+    return {
+      ...state,
+      heroes: action.payload,
+      loading: false,};}
 
-    case types.actualPublisher:
-      return {
-        ...state,
-        actualPublisher: action.payload,
-      };
+  if(action.type === types.actualPublisher) {
+    return {
+      ...state,
+      actualPublisher: action.payload,
+    };}
 
-    case types.name:
-      return {
-        ...state,
-        nameSearch: action.payload,
-      };
+  if(action.type === types.name) {
+    return {
+      ...state,
+      nameSearch: action.payload,
+    };}
 
-    case types.heroId:
-      return {
-        ...state,
-        heroId: action.payload,
-      };
+  if(action.type === types.heroId) {
+    return {
+      ...state,
+      heroId: action.payload,
+    };}
+    
+  return state;
 
-    default:
-      return state;
   }
-};
