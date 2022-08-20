@@ -1,41 +1,42 @@
 import { useEffect, useState } from "react";
 
-export const useDetails = (
-  arr:any,
-  ipp:any,
-  counter:any,
-  increment:any,
-  decrement:any,
-  reset:any,
-  setCounter:any
-) => {            
+let $zero = 0;let $one = 1;let $two = 2;let $three = 3;let $four = 4;let $five = 5;let $six = 6;let $seven = 7;let $eight = 8;   
+
+export const useDetails = (arr:any,ipp:any,counter:any,increment:any,decrement:any,reset:any,setCounter:any) => {  
+        
   const [itemsPerPage] = useState(ipp);
-
-  const [pageNumberLimit] = useState(5);
-  const [maxPageNumberLimit, setMaxPageNumberLimit] = useState(5);
-  const [minPageNumberLimit, setMinPageNumberLimit] = useState(0);
-
-  const pages = [];
-
+  const [pageNumberLimit] = useState($eight);
+  const [maxPageNumberLimit, setMaxPageNumberLimit] = useState($eight);
+  const [minPageNumberLimit, setMinPageNumberLimit] = useState($zero);
+//Declare all variables and constants that would be used
+//***************************************************************************** */
+//Constants
+const indexOfLastItem = counter * itemsPerPage;
+const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+const currentItems = arr.slice(indexOfFirstItem, indexOfLastItem);
+const addingNumbs = maxPageNumberLimit + pageNumberLimit
+const subtractingNumbs = minPageNumberLimit - pageNumberLimit;
+const substractingNumbsTwo = maxPageNumberLimit - pageNumberLimit
+const pages = [];
+//Variables
+let countingUp = counter + $one;
+let countingDown = counter - $one;
+let pageDecrementBtn = null;
+let pageIncrementBtn = null;
+//**************************************************************************** */  
   for (let i = 1; i <= Math.ceil(arr.length / itemsPerPage); i++) {
     pages.push(i);
   }
 
-  useEffect(() => {
-    reset();
-    setMaxPageNumberLimit(5);
-    setMinPageNumberLimit(0);
-  }, [arr]);
-
   const handleClick = (e:any) => {
     setCounter(Number(e.target.id));
   };
-
+   //This will allow us to adjust the amount of pages
   const renderPageNumbers = pages.map((number:any) => {
-    if (number < maxPageNumberLimit + 1 && number > minPageNumberLimit) {
+    if (number < maxPageNumberLimit + $one && number > minPageNumberLimit) {
       return (
         <li
-          key={number * 154}
+          key={number}
           id={number}
           onClick={handleClick}
         >
@@ -47,29 +48,21 @@ export const useDetails = (
     }
   });
 
-  const indexOfLastItem = counter * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = arr.slice(indexOfFirstItem, indexOfLastItem);
-
-  const handleNextPage = () => {
-    increment(1);
-
-    if (counter + 1 > maxPageNumberLimit) {
-      setMaxPageNumberLimit(maxPageNumberLimit + pageNumberLimit);
-      setMinPageNumberLimit(minPageNumberLimit + pageNumberLimit);
-    }
-
-  };
-
+  //Here we control whether the user goes backwards or fordwards 
   const handlePrevPage = () => {
-    decrement(1);
-    if ((counter - 1) % pageNumberLimit === 0) {
-      setMaxPageNumberLimit(maxPageNumberLimit - pageNumberLimit);
-      setMinPageNumberLimit(minPageNumberLimit - pageNumberLimit);
+    decrement($one);
+    if (countingDown % pageNumberLimit === $zero) {
+      setMaxPageNumberLimit(substractingNumbsTwo);
+      setMinPageNumberLimit(subtractingNumbs);
     }
   };
+  const handleNextPage = () => {
+    increment($one);
 
-  let pageIncrementBtn = null;
+    if (countingUp > maxPageNumberLimit) {
+      setMaxPageNumberLimit(addingNumbs);
+      setMinPageNumberLimit(subtractingNumbs);
+    }};
 
   if (pages.length > maxPageNumberLimit) {
     pageIncrementBtn = (
@@ -79,9 +72,7 @@ export const useDetails = (
     );
   }
 
-  let pageDecrementBtn = null;
-
-  if (minPageNumberLimit >= 1) {
+  if (minPageNumberLimit >= $one) {
     pageDecrementBtn = (
       <li  onClick={() => handlePrevPage()}>
         &hellip;
@@ -89,13 +80,4 @@ export const useDetails = (
     );
   }
 
-  return {
-    renderPageNumbers,
-    currentItems,
-    pageDecrementBtn,
-    pageIncrementBtn,
-    handleNextPage,
-    handlePrevPage,
-    pages,
-  };
-};
+  return {renderPageNumbers,currentItems,pageDecrementBtn,pageIncrementBtn,handleNextPage,handlePrevPage,pages,};};

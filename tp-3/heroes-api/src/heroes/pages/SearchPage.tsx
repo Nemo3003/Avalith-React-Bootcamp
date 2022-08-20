@@ -5,7 +5,6 @@ import queryString from "query-string";
 import { HeroCard } from "../components/HeroCard";
 import { useContext } from "react";
 import { FetchHeroes } from "../context/FetchHeroes";
-
 export const SearchPage = () => {
   const { searchResults, handleSearchPage }:any = useContext(FetchHeroes);
 

@@ -1,7 +1,6 @@
 import { AppRouter } from "./routes/AppRoutes";
 import { AuthProvider } from "./auth/context/AuthProvider";
 import React, { useState } from 'react'
-
 import "../src/heroes/scss/styles.css"
 
 
@@ -27,6 +26,7 @@ export const App = () => {
   const handleViolet = () => {
     document.body.classList.toggle("violet");
   }
+  
   return (
     <>
     

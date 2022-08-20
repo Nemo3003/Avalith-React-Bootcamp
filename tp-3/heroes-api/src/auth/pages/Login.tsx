@@ -27,7 +27,7 @@ export const Login = ()=>{
       });
       {Swal.fire(
         'You have logged in!',
-        'Take a look!',
+        'Take a look to our heroes!',
         'success'
       )}
     };

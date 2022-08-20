@@ -1,3 +1,5 @@
+import Swal from 'sweetalert2';
+
 export const getHeroesByPublishers = (publisher:String, arr:any[]) => {
     if (publisher === "all" || publisher === "") {
       return arr;
@@ -7,10 +9,4 @@ export const getHeroesByPublishers = (publisher:String, arr:any[]) => {
       );
   
       if (finalArray) {
-        return finalArray;
-      } else {
-        throw new Error(`${publisher} is not a valid publisher`);
-      }
-    }
-  };
-  
+        return finalArray;} }}
