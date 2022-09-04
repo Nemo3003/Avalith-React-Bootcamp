@@ -8,17 +8,23 @@ import { Google } from "@mui/icons-material";
 import { useForm } from "../../hooks";
 import { useDispatch, useSelector } from "react-redux";
 import { checkingAuthentication, startGoogleSignIn } from "../../store/auth/thunks";
-import {authSlice,login, logout} from "../../store/auth/authSlice";
 import { useMemo } from "react";
+
+
+// Tarea: En el componente LoginPage.jsx, utilizar el estado del store de redux y hacer la siguiente validación:
+
+// Si el valor del state.status es igual a "checking" deshabilitar los botones de login y google.
+
+// Para esto previamente guardar el resultado booleano de esa condición, en una constante llamada isChecking, utilizando useMemo.
+
 
 export const LoginPage = () => {
 
-  
   const dispatch = useDispatch();
 
-  const {status} = useSelector((state)=>state.auth)
+  const { status } = useSelector((state)=> state.auth);
 
-  const isChecking = useMemo(()=>status === 'checking', [status])
+  const isChecking = useMemo(() => status === 'checking', [status])
 
   const { email, password, onInputChange } = useForm({
     email: 'skillfactory@gmail.com',
@@ -36,7 +42,6 @@ export const LoginPage = () => {
 
     dispatch(startGoogleSignIn());
   }
-
 
   return (
     <AuthLayout title='Login'>    
@@ -69,8 +74,7 @@ export const LoginPage = () => {
                 variant="contained" 
                 fullWidth
                 type='submit'
-                id="login-id"
-                disabled = {isChecking}
+                disabled={isChecking}
                 >
                 <Typography sx={{ ml: 1 }}>Login</Typography>
               </Button>
@@ -80,7 +84,6 @@ export const LoginPage = () => {
                 variant="contained" 
                 fullWidth
                 onClick={onGoogleSignIn}
-                id="login-id"
                 disabled={isChecking}
               >
                 <Google />

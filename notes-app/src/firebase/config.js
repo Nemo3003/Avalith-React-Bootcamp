@@ -1,21 +1,18 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
-import { getFirestore } from "firebase/firestore/lite";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { getAuth } from 'firebase/auth';
+import { getFirestore } from 'firebase/firestore/lite'
 
-// Your web app's Firebase configuration
+
 const firebaseConfig = {
-  apiKey: "AIzaSyC397zKHKNeM2jeLSvWhfUcikr1hz_LkzA",
-  authDomain: "avalith-notes-app.firebaseapp.com",
-  projectId: "avalith-notes-app",
-  storageBucket: "avalith-notes-app.appspot.com",
-  messagingSenderId: "663270995624",
-  appId: "1:663270995624:web:bfbf788206f3df3f88b49d"
+    apiKey: "AIzaSyDM48mzwICg-7Zx46e_ps0roOm4jxsxGkM",
+    authDomain: "skillfactory-react.firebaseapp.com",
+    projectId: "skillfactory-react",
+    storageBucket: "skillfactory-react.appspot.com",
+    messagingSenderId: "22167952702",
+    appId: "1:22167952702:web:6fba39b785d3cfa271e06f"
 };
+  
 
-// Initialize Firebase
-const FireBaseApp = initializeApp(firebaseConfig);
-export const FirebaseAuth = getAuth(FireBaseApp);
-export const FirebaseDB = getFirestore(FireBaseApp)
+const FirebaseApp = initializeApp(firebaseConfig);
+export const FirebaseAuth = getAuth( FirebaseApp );
+export const FirebaseDB = getFirestore( FirebaseApp );
