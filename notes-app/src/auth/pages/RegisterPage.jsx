@@ -4,23 +4,45 @@ import { AuthLayout } from "../layout/AuthLayout";
 
 import { Button, Grid, Link, TextField, Typography } from "@mui/material";
 import { useForm } from "../../hooks";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { startCreatingUserWithEmail } from "../../store/auth/thunks";
 
 const formData = {
-  email: "skillfactory@google.com",
-  password: "123456",
-  displayName: "SkillFactory",
+  email: "",
+  password: "",
+  displayName: "",
 };
 
 const formValidations = {
-  email: [(value) => value.includes("@"), "El correo debe tener un @"],
-  password: [
-    (value) => value.length >= 6,
-    "El password debe tener al menos 6 caracteres",
+  email: [
+    [(value) => value.includes("@"), "El correo debe tener un @"],
+    [
+      (value) =>
+        value.match(
+          /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$/
+        ),
+      "El correo debe tener un formato valido",
+    ],
   ],
-  displayName: [(value) => value.length >= 1, "El nombre es obligatorio"],
+  password: [
+    [
+      (value) => value.length >= 6,
+      "El password debe tener al menos 6 caracteres",
+    ],
+  ],
+  displayName: [
+    [(value) => value.length >= 1, "El nombre es obligatorio"],
+    [(value) => value.length >= 6, "El nombre debe tener al menos 6 letras"]
+  ]
 };
 
 export const RegisterPage = () => {
+
+  const dispatch = useDispatch()
+
+  const [formSubmited, setFormSubmited] = useState(false);
+
   const {
     formState,
     displayName,
@@ -35,7 +57,10 @@ export const RegisterPage = () => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    console.log(formState);
+    setFormSubmited(true);
+    if (!isFormValid) return;
+
+    dispatch(startCreatingUserWithEmail(formState))
   };
 
   return (
@@ -50,8 +75,8 @@ export const RegisterPage = () => {
             name="displayName"
             value={displayName}
             onChange={onInputChange}
-            error={!!displayNameValid}
-            helperText={displayNameValid}
+            error={!!displayNameValid && formSubmited}
+            helperText={formSubmited && displayNameValid}
           />
         </Grid>
         <Grid item xs={12} sx={{ mt: 2 }}>
@@ -63,8 +88,8 @@ export const RegisterPage = () => {
             name="email"
             value={email}
             onChange={onInputChange}
-            error={!!emailValid}
-            helperText={emailValid}
+            error={!!emailValid && formSubmited}
+            helperText={formSubmited && emailValid}
           />
         </Grid>
         <Grid item xs={12} sx={{ mt: 2 }}>
@@ -76,13 +101,18 @@ export const RegisterPage = () => {
             name="password"
             value={password}
             onChange={onInputChange}
-            error={!!passwordValid}
-            helperText={passwordValid}
+            error={!!passwordValid && formSubmited}
+            helperText={formSubmited && passwordValid}
           />
         </Grid>
         <Grid container spacing={1} sx={{ mb: 2, mt: 1 }}>
           <Grid item xs={12} sx={{ mt: 2 }}>
-            <Button variant="contained" fullWidth type="submit">
+            <Button
+              variant="contained"
+              fullWidth
+              type="submit"
+              disabled={!isFormValid && formSubmited}
+            >
               <Typography sx={{ ml: 1 }}>Crear cuenta</Typography>
             </Button>
           </Grid>

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
 export const useForm = ( initialForm = {}, formValidations = {} ) => {
   
@@ -31,12 +31,43 @@ export const useForm = ( initialForm = {}, formValidations = {} ) => {
 
     }, [formValidation])
 
-        
+    
+    const createValidators = () => {
+        const formCheckedValues = {};
+        // [email, password, displayName]
+        for (const formField of Object.keys(formValidations)) {
+            for (const tupla in formValidations[formField]) {              
+                // email: [
+                //     [(value) => value.includes("@"), "El correo debe tener un @"], 
+                //     [(value) => value.includes("@"), "El correo debe tener un @"]
+                // ]
+
+            const [ fn, errorMessage ] = formValidations[formField][tupla];
+
+            formCheckedValues[ `${ formField }Valid` ] = fn( formState[formField] ) ? null : errorMessage;
+            // {
+            //     emailValid: null,
+            //     passwordValid: "El password debe tener al menos 6 caracteres",
+            //     displayNameValid: null,
+            // }
+            if(!fn(formState[formField])) break;                
+            }        
+           
+        }
+        setFormValidation( formCheckedValues )
+    }
+
+    useEffect(() => {
+        createValidators();
+    }, [formState])
+    
 
     return {
         ...formState,
+        ...formValidation,
         formState,
         onInputChange,
         onResetForm,
+        isFormValid
     }
 }

@@ -7,7 +7,7 @@ import { Button, Grid, Link, TextField, Typography } from "@mui/material";
 import { Google } from "@mui/icons-material";
 import { useForm } from "../../hooks";
 import { useDispatch, useSelector } from "react-redux";
-import { checkingAuthentication, startGoogleSignIn } from "../../store/auth/thunks";
+import { checkingAuthentication, startGoogleSignIn, startLoginWithEmailPassword } from "../../store/auth/thunks";
 import { useMemo } from "react";
 
 
@@ -27,14 +27,14 @@ export const LoginPage = () => {
   const isChecking = useMemo(() => status === 'checking', [status])
 
   const { email, password, onInputChange } = useForm({
-    email: 'skillfactory@gmail.com',
-    password: '123456'
+    email: '',
+    password: ''
   })
 
   const onSubmit = (event) => {
     event.preventDefault();
     console.log({email, password});
-    dispatch(checkingAuthentication());
+    dispatch(startLoginWithEmailPassword({email, password}));
   }
 
   const onGoogleSignIn = ()=>{
