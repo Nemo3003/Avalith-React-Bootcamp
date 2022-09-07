@@ -4,12 +4,12 @@ import { getFirestore } from 'firebase/firestore/lite'
 
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDM48mzwICg-7Zx46e_ps0roOm4jxsxGkM",
-    authDomain: "skillfactory-react.firebaseapp.com",
-    projectId: "skillfactory-react",
-    storageBucket: "skillfactory-react.appspot.com",
-    messagingSenderId: "22167952702",
-    appId: "1:22167952702:web:6fba39b785d3cfa271e06f"
+  apiKey: "AIzaSyC397zKHKNeM2jeLSvWhfUcikr1hz_LkzA",
+  authDomain: "avalith-notes-app.firebaseapp.com",
+  projectId: "avalith-notes-app",
+  storageBucket: "avalith-notes-app.appspot.com",
+  messagingSenderId: "663270995624",
+  appId: "1:663270995624:web:bfbf788206f3df3f88b49d"
 };
   
 
