@@ -17,6 +17,7 @@
     "@reduxjs/toolkit": "^1.8.5",
     "firebase": "^9.9.4",
     "lazy-load": "^0.0.2",
+    "pug": "^3.0.2",
     "query-string": "^7.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
