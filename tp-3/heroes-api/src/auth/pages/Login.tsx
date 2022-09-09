@@ -1,9 +1,12 @@
-import React from "react";
+import React,{useMemo} from "react";
 import useState from "react";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { useForm } from "../../hooks/useForm";
+import { Link, Link as RouterLink } from "react-router-dom";
+import {checkingAuthentication, startGoogleSignIn, startLoginWithEmailPassword } from '../store/auth/thunks'
+import { useDispatch, useSelector } from "react-redux";
 import Swal from 'sweetalert2';
 import "./scss/login.css"
 

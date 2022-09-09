@@ -1,23 +1,66 @@
-import {useState} from 'react';
+import { useEffect, useMemo, useState } from 'react'
 
-export const useForm = (initialValue = {})=>{
-    const [formState, setFormState] = useState(initialValue);
 
-    const onInputChange = ({target}: any) =>{
-        const {name, value} = target;
+export const useForm = ( initialForm = {}, formValidations = {} ) => {
+const [formState, setFormState]:any = useState(initialForm);
+const [formValidation, setFormValidation]:any = useState({})
 
-        setFormState({
-            ...formState,
-            [name]: value,
-        });
-    };
-    const onResetForm = ()=>{
-        setFormState(initialValue);
-    };
-    return{
-        formState,
-        onInputChange,
-        onResetForm,
-    };
+const onInputChange = ({target}:any) => {
+    const {name, value} = target;
+const onResetForm = () => {
+    setFormState(initialForm)
+}
 
-};
+
+const isFormValid = useMemo(() => {
+
+    // [email, password, displayName]
+
+    for (const formValue of Object.keys(formValidation)) {
+       if( formValidation[formValue] !== null ) return false
+    }
+
+    return true;
+
+}, [formValidation])
+
+
+const createValidators = () => {
+    const formCheckedValues:any= {};
+    // [email, password, displayName]
+    for (const formField of Object.keys(formValidations)) {
+        for (const tupla in formValidations[formField]) {              
+            // email: [
+            //     [(value) => value.includes("@"), "El correo debe tener un @"], 
+            //     [(value) => value.includes("@"), "El correo debe tener un @"]
+            // ]
+
+        const [ fn, errorMessage ] = formValidations[formField][tupla];
+
+        formCheckedValues[ `${ formField }Valid` ] = fn( formState[formField] ) ? null : errorMessage;
+        // {
+        //     emailValid: null,
+        //     passwordValid: "El password debe tener al menos 6 caracteres",
+        //     displayNameValid: null,
+        // }
+        if(!fn(formState[formField])) break;                
+        }        
+
+    }
+    setFormValidation( formCheckedValues )
+}
+
+useEffect(() => {
+    createValidators();
+}, [formState])
+
+
+return {
+    ...formState,
+    ...formValidation,
+    formState,
+    onInputChange,
+    onResetForm,
+    isFormValid
+}
+}}
