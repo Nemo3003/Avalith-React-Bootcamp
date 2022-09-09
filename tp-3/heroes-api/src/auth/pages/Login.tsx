@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { useForm } from "../../hooks/useForm";
 import { Link, Link as RouterLink } from "react-router-dom";
-import {checkingAuthentication, startGoogleSignIn, startLoginWithEmailPassword } from '../store/auth/thunks'
+import {checkingAuthentication, startGoogleSignIn, startLoginWithEmailPassword } from '../../store/auth/thunks'
 import { useDispatch, useSelector } from "react-redux";
 import Swal from 'sweetalert2';
 import "./scss/login.css"
@@ -15,7 +15,7 @@ export const Login = ()=>{
     const navigate = useNavigate();
  
   
-    const { formState, onInputChange } = useForm ({
+    const { formState, onInputChange }:any = useForm ({
       username: "",
     });
     const { username}: any = formState;

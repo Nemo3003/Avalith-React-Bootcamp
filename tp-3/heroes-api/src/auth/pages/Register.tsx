@@ -1,10 +1,9 @@
 import React, { useMemo, useState } from "react";
 import { useForm } from "../../hooks/useForm";
 import Typed from "react-typed";
-import "../../../src/styles.css"
 import { Link, Link as RouterLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import {startCreatingUserWithEmail} from '../store/auth/thunks'
+import {startCreatingUserWithEmail} from '../../store/auth/thunks'
 import { useDispatch, useSelector } from "react-redux";
 
 
@@ -55,7 +54,7 @@ export const Register = () => {
     displayNameValid,
     passwordValid,
     emailValid,
-  } = useForm(formData, formValidations);
+  }:any = useForm(formData, formValidations);
 
   const onSubmit = (event:any) => {
     event.preventDefault();
