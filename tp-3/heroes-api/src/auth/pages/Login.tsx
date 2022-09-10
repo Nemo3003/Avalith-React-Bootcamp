@@ -1,45 +1,48 @@
 import React,{useMemo} from "react";
-import useState from "react";
-import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../context/AuthContext";
 import { useForm } from "../../hooks/useForm";
-import { Link, Link as RouterLink } from "react-router-dom";
 import {checkingAuthentication, startGoogleSignIn, startLoginWithEmailPassword } from '../../store/auth/thunks'
 import { useDispatch, useSelector } from "react-redux";
+import { Link, Link as RouterLink } from "react-router-dom";
 import Swal from 'sweetalert2';
 import "./scss/login.css"
 
 export const Login = ()=>{
-    const { login } = useContext(AuthContext);
-    const navigate = useNavigate();
- 
-  
-    const { formState, onInputChange }:any = useForm ({
-      username: "",
+  const dispatch = useDispatch();
+
+  const { status } = useSelector((state:any)=> state.auth);
+
+  const isChecking = useMemo(() => status === 'checking', [status])
+
+  const { email, password, onInputChange }:any = useForm({
+    email: '',
+    password: ''
+  })
+  const navigate = useNavigate();
+
+  const onLogin = (event:any) => {
+    event.preventDefault();
+    console.log({email, password});
+    dispatch(startLoginWithEmailPassword({email, password}));
+    navigate("/", {
+      replace: true,
     });
-    const { username}: any = formState;
-  
-    const onLogin = () => {
-      if (username.trim().length <= 1) return;
-  
-      login(username);
-  
-      navigate("/", {
-        replace: true,
-      });
-      {Swal.fire(
-        'You have logged in!',
-        'Take a look to our heroes!',
-        'success'
-      )}
-    };
+  }
+
+  const onGgSignIn = ()=>{
+    console.log('onGoogleSignIn');
+    dispatch(startGoogleSignIn());
+    navigate("/", {
+      replace: true,
+    });
+  }
+
   
     return(
 <div className="container">
 
     <div className="panel">
-        <form method="post"onSubmit={()=> onLogin()}>
+        <form method="post"onSubmit={onLogin}>
 
         <div className="panel-group">
             <input 
@@ -47,7 +50,7 @@ export const Login = ()=>{
             className="input" 
             name="username"
             type="text"
-            value= {username}
+ 
             onChange={onInputChange}
             required/>
             <span className="border"></span>
@@ -59,6 +62,13 @@ export const Login = ()=>{
             <label>Password</label>
         </div>
         <button type="submit">Login</button>
+        <button  className="btn btn-outline-primary mt-3" type="submit"onClick={onGgSignIn}
+                disabled={isChecking} >
+            Google
+            </button>
+            <Link component={RouterLink} color="inherit" to="/auth/register" style={{display: 'flex', justifyContent: 'end'}} className='linkColor'>
+              Crear una cuenta
+            </Link>
         </form>
         
     </div>

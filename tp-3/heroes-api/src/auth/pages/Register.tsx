@@ -1,12 +1,9 @@
 import React, { useMemo, useState } from "react";
 import { useForm } from "../../hooks/useForm";
-import Typed from "react-typed";
 import { Link, Link as RouterLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import {startCreatingUserWithEmail} from '../../store/auth/thunks'
 import { useDispatch, useSelector } from "react-redux";
-
-
 
 const formData = {
   email: "",
@@ -36,8 +33,6 @@ const formValidations = {
     [(value:any) => value.length >= 6, "El nombre debe tener al menos 6 letras"]
   ]
 };
-
-
 
 export const Register = () => {
   const dispatch = useDispatch()
@@ -69,32 +64,16 @@ export const Register = () => {
 
   return (
     <>
-      <div className="d-flex justify-content-center align-items-center flex-column vw-100 vh-100 bg-dark ">
-        <img
-          className=" rounded-circle" 
-          src="https://c.tenor.com/OrWIV_jmwE0AAAAM/heart-i-love-you.gif"
-          alt="gif"
-        />
+      <div className="">
         <form onSubmit={onSubmit}>
-          <Typed
-          className="d-flex justify-content-center text-white logintyping"
-            strings={[
-              '"Bad Deadpool... Good Deadpool!"',
-              '"Say the magic words, Fat Gandalf."',
-              '"This is my most prized possession.."',
-              '"Captain Deadpool! No, just Deadpool."',
-            ]}
-            typeSpeed={40}
-            backSpeed={50}
-            loop
-          />
+          
           <div className="d-grid gap-2 mt-3">
             <input
               className="inputlogin"
               style={{width:"40vw", borderRadius:"0.2em", padding:"0.5em"}}
-              label="Nombre Completo"
+              label="FullName"
             type="text"
-            placeholder="Nombre Completo"
+            placeholder="Full name"
             name="displayName"
             value={displayName}
             onChange={onInputChange}
@@ -102,9 +81,9 @@ export const Register = () => {
             <input
               className="inputlogin"
               style={{width:"40vw", borderRadius:"0.2em", padding:"0.5em"}}
-              label="Correo"
+              label="Email"
             type="email"
-            placeholder="correo@gmail.com"
+            placeholder="john@example.com"
             name="email"
             value={email}
             onChange={onInputChange}
@@ -112,9 +91,9 @@ export const Register = () => {
             <input
               className="inputlogin"
               style={{width:"40vw", borderRadius:"0.2em", padding:"0.5em"}}
-              label="Contraseña"
+              label="Password"
             type="password"
-            placeholder="Contraseña"
+            placeholder="Password"
             name="password"
             value={password}
             onChange={onInputChange}
