@@ -1,9 +1,12 @@
-import React, { useMemo, useState } from "react";
+import { Link as RouterLink } from "react-router-dom";
+
+import { AuthLayout } from "../layout/AuthLayout";
+
+import { Button, Grid, Link, TextField, Typography } from "@mui/material";
 import { useForm } from "../../hooks/useForm";
-import { Link, Link as RouterLink } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-import {startCreatingUserWithEmail} from '../../store/auth/thunks'
-import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { startCreatingUserWithEmail } from "../../store/auth/thunks";
 
 const formData = {
   email: "",
@@ -35,6 +38,7 @@ const formValidations = {
 };
 
 export const Register = () => {
+
   const dispatch = useDispatch()
 
   const [formSubmited, setFormSubmited] = useState(false);
@@ -55,59 +59,70 @@ export const Register = () => {
     event.preventDefault();
     setFormSubmited(true);
     if (!isFormValid) return;
-    const navigate = useNavigate();
-    dispatch(startCreatingUserWithEmail(formState));
-    navigate("/", {
-      replace: true,
-    });
+
+    dispatch(startCreatingUserWithEmail(formState))
   };
 
   return (
-    <>
-      <div className="">
-        <form onSubmit={onSubmit}>
-          
-          <div className="d-grid gap-2 mt-3">
-            <input
-              className="inputlogin"
-              style={{width:"40vw", borderRadius:"0.2em", padding:"0.5em"}}
-              label="FullName"
+    <AuthLayout title="Crear cuenta">
+      <form onSubmit={onSubmit} className='animate__animated animate__fadeIn'>
+        <Grid item xs={12} sx={{ mt: 2 }}>
+          <TextField
+            label="Nombre Completo"
             type="text"
-            placeholder="Full name"
+            placeholder="Nombre Completo"
+            fullWidth
             name="displayName"
             value={displayName}
             onChange={onInputChange}
-            />
-            <input
-              className="inputlogin"
-              style={{width:"40vw", borderRadius:"0.2em", padding:"0.5em"}}
-              label="Email"
+            error={!!displayNameValid && formSubmited}
+            helperText={formSubmited && displayNameValid}
+          />
+        </Grid>
+        <Grid item xs={12} sx={{ mt: 2 }}>
+          <TextField
+            label="Correo"
             type="email"
-            placeholder="john@example.com"
+            placeholder="correo@gmail.com"
+            fullWidth
             name="email"
             value={email}
             onChange={onInputChange}
-            />
-            <input
-              className="inputlogin"
-              style={{width:"40vw", borderRadius:"0.2em", padding:"0.5em"}}
-              label="Password"
+            error={!!emailValid && formSubmited}
+            helperText={formSubmited && emailValid}
+          />
+        </Grid>
+        <Grid item xs={12} sx={{ mt: 2 }}>
+          <TextField
+            label="Contraseña"
             type="password"
-            placeholder="Password"
+            placeholder="Contraseña"
+            fullWidth
             name="password"
             value={password}
             onChange={onInputChange}
-            />
-            <button disabled={!isFormValid && formSubmited} className="btn btn-outline-primary mt-3" type="submit">
-            Crear una cuenta
-            </button>
-
-            <Link component={RouterLink} color="inherit" to="/auth/login" style={{display: 'flex', justifyContent: 'end'}}>
+            error={!!passwordValid && formSubmited}
+            helperText={formSubmited && passwordValid}
+          />
+        </Grid>
+        <Grid container spacing={1} sx={{ mb: 2, mt: 1 }}>
+          <Grid item xs={12} sx={{ mt: 2 }}>
+            <Button
+              variant="contained"
+              fullWidth
+              type="submit"
+              disabled={!isFormValid && formSubmited}
+            >
+              <Typography sx={{ ml: 1 }}>Crear cuenta</Typography>
+            </Button>
+          </Grid>
+        </Grid>
+        <Grid container direction="row" justifyContent="end">
+          <Link component={RouterLink} color="inherit" to="/auth/login">
             Ya tengo una cuenta
-            </Link>
-          </div>
-        </form>
-      </div>
-    </>
+          </Link>
+        </Grid>
+      </form>
+    </AuthLayout>
   );
 };
