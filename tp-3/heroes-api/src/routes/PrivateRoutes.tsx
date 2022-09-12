@@ -7,4 +7,5 @@ export const PrivateRoutes = ({ children }:any) => {
   const { logged } = useContext(AuthContext);
 
   return logged ? children : <Navigate to="/login"/>;
+  
 };

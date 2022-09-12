@@ -2,20 +2,20 @@ import { useContext } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../auth/context/AuthContext";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { startLogout } from "../../store/auth/thunks";
 import "../../heroes/scss/navbar.css"
 
 export const Navbar = () => {
   const navigate = useNavigate();
   const { user, logout } = useContext(AuthContext);
   const [sidebar, setSidebar] = useState(false);
-
+  const dispatch = useDispatch();
   const onLogout = () => {
-    logout();
-
-    navigate("/login", {
+    dispatch(startLogout());
+    navigate("auth/login", {
       replace: true,
     });
-    
   };
   
 
