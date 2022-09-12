@@ -48,13 +48,13 @@ export const Login = ()=>{
             <input 
             id="textbox"
             className="input" 
-            name="username"
+            name="email"
             type="text"
  
             onChange={onInputChange}
             required/>
             <span className="border"></span>
-            <label>Username</label>
+            <label>Email</label>
         </div>
         <div className="panel-group">
             <input className="input" type="password" required/>

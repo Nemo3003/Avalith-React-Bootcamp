@@ -10,7 +10,7 @@ export const checkingAuthentication = (email:String, password:any) =>{
 }
 
 export const startGoogleSignIn = () => {
-    return async (dispatch:any)=>{
+    return async (dispatch)=>{
         dispatch(checkingCredentials());
 
         const result = await signInWithGoogle();
@@ -22,7 +22,7 @@ export const startGoogleSignIn = () => {
 }
 
 export const startCreatingUserWithEmail = ({email, password, displayName}:any) =>{
-    return async (dispatch:any) => {
+    return async (dispatch) => {
         dispatch(checkingCredentials());
 
         const result = await registerUserWithEmail({email, password, displayName});
@@ -34,7 +34,7 @@ export const startCreatingUserWithEmail = ({email, password, displayName}:any) =
 }
 
 export const startLoginWithEmailPassword = ({email, password}:any) => {
-    return async (dispatch:any) => {
+    return async (dispatch) => {
         dispatch(checkingCredentials());
 
         const result = await loginWithEmailPassword({email, password});
@@ -46,7 +46,7 @@ export const startLoginWithEmailPassword = ({email, password}:any) => {
 
 
 export const startLogout = () => {
-    return async(dispatch:any) => {
+    return async(dispatch) => {
         await logoutFirebase();
         dispatch(logout(null));
     }
