@@ -8,6 +8,8 @@ import { useForm } from '../../hooks/useForm';
 import { useEffect, useMemo } from 'react';
 import { setActiveNote } from '../../store/notes/notesSlice';
 import { startSaveNote } from '../../store/notes/thunks';
+import {UploadImagesButton} from '../components/UploadImagesButton'
+import Swal from 'sweetalert2'
 
 const formValid = {
     title : [
@@ -22,13 +24,19 @@ export const NoteView = () => {
 
     const dispatch = useDispatch()
 
-    const { activeNote } = useSelector( state => state.note );
+    const { activeNote, isSaving, messageSaved } = useSelector( state => state.note );
 
     const { body, title, onInputChange, formState, date, bodyValid, titleValid, isFormValid  } = useForm( activeNote, formValid );
 
     useEffect(() => {
         dispatch(setActiveNote(formState));
     }, [formState])
+
+    useEffect(() => {
+        if(messageSaved.length > 0){
+            Swal.fire('Nota actualizada', messageSaved, 'success')
+        }
+    }, [messageSaved])
     
 
     const dateString = useMemo(() => {
@@ -54,6 +62,7 @@ export const NoteView = () => {
                 {dateString}
             </Typography>            
         </Grid> 
+        
         <Grid item> 
             <Button sx={{padding: 2}}
                 onClick={ onSaveNote }
@@ -63,6 +72,7 @@ export const NoteView = () => {
             </Button>     
         </Grid>
         <Grid container>
+        <UploadImagesButton/>
             <TextField 
                 type='text'
                 variant='filled'
