@@ -12,7 +12,7 @@ const initialState = {
 //     title: '',
 //     body: '',
 //     date: 123456,
-//     imageUrl: []
+//     imagesUrl: []
 // }
 
 export const noteSlice = createSlice({
@@ -40,9 +40,23 @@ export const noteSlice = createSlice({
         return note
       })  
       state.isSaving = false;
-      state.messageSaved = `${payload.title}, actualizada correctamente`
+      state.messageSaved = `${payload.title}, Actualizada correctamente`;
     },
-    deleteNoteById: (state) => {},
+    setPhotosToActiveNote: (state, {payload}) => {
+      state.activeNote.imagesUrls = [ ...state.activeNote.imagesUrls, ...payload ];
+      state.isSaving = false;
+    },
+    clearNotesLogout: (state)=>{
+      state.isSaving = false;
+      state.messageSaved = '';
+      state.notes = [];
+      state.activeNote = null;
+    },
+    deleteNoteById: (state, {payload}) => {
+      state.notes = state.notes.filter(note => note.id !== payload);
+      state.activeNote = null;
+      state.isSaving = false;
+    },
   },
 });
 
@@ -53,6 +67,8 @@ export const {
   startSaving,
   updateNote,
   deleteNoteById,
+  setPhotosToActiveNote,
+  clearNotesLogout,
 } = noteSlice.actions;
 
 export default noteSlice.reducer;

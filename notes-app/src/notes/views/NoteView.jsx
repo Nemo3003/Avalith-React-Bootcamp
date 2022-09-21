@@ -1,15 +1,16 @@
-import { SaveOutlined } from '@mui/icons-material';
+import { DeleteForeverOutlined, SaveOutlined } from '@mui/icons-material';
 import { Button, Grid, TextField, Typography } from '@mui/material';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { ImageGalery } from '../components';
+import { UploadImagesButton } from '../components/UploadImagesButton';
 
 import { useForm } from '../../hooks/useForm';
 import { useEffect, useMemo } from 'react';
 import { setActiveNote } from '../../store/notes/notesSlice';
-import { startSaveNote } from '../../store/notes/thunks';
-import {UploadImagesButton} from '../components/UploadImagesButton'
-import Swal from 'sweetalert2'
+import { startDeleteNote, startSaveNote } from '../../store/notes/thunks';
+
+import Swal from 'sweetalert2';
 
 const formValid = {
     title : [
@@ -33,10 +34,10 @@ export const NoteView = () => {
     }, [formState])
 
     useEffect(() => {
-        if(messageSaved.length > 0){
-            Swal.fire('Nota actualizada', messageSaved, 'success')
+        if( messageSaved.length > 0 ){
+            Swal.fire('Nota actualizada', messageSaved, 'success');
         }
-    }, [messageSaved])
+    }, [messageSaved]);  
     
 
     const dateString = useMemo(() => {
@@ -46,6 +47,10 @@ export const NoteView = () => {
 
     const onSaveNote = () => {
         dispatch( startSaveNote() );
+    }
+
+    const onDeleteNote = () => {
+        dispatch( startDeleteNote() );
     }
 
   return (
@@ -62,17 +67,24 @@ export const NoteView = () => {
                 {dateString}
             </Typography>            
         </Grid> 
-        
         <Grid item> 
+            <UploadImagesButton />
             <Button sx={{padding: 2}}
                 onClick={ onSaveNote }
+                disabled={isSaving}
             >
                 <SaveOutlined sx={{fontSize: 30, mr: 1}} />
                 Guardar
-            </Button>     
+            </Button>  
+            <Button sx={{padding: 2}}
+                onClick={ onDeleteNote }
+                disabled={isSaving}
+            >
+                <DeleteForeverOutlined sx={{fontSize: 30, mr: 1}} />
+                Eliminar Nota
+            </Button>                
         </Grid>
         <Grid container>
-        <UploadImagesButton/>
             <TextField 
                 type='text'
                 variant='filled'
@@ -101,7 +113,7 @@ export const NoteView = () => {
             
         </Grid>
         {/* Galeria de imagenes */}
-        <ImageGalery />
+        <ImageGalery images={activeNote.imagesUrls} />
     </Grid>
   )
 }

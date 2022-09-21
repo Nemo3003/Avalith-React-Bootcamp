@@ -3,7 +3,7 @@ import { Link as RouterLink } from "react-router-dom";
 import { AuthLayout } from "../layout/AuthLayout";
 
 import { Button, Grid, Link, TextField, Typography } from "@mui/material";
-import { useForm } from "../../hooks";
+import { useForm } from "../../hooks/useForm";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { startCreatingUserWithEmail } from "../../store/auth/thunks";

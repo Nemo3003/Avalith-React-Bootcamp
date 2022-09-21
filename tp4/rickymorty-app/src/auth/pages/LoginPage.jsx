@@ -5,7 +5,7 @@ import { AuthLayout } from "../layout/AuthLayout";
 import { Button, Grid, Link, TextField, Typography } from "@mui/material";
 
 import { Google } from "@mui/icons-material";
-import { useForm } from "../../hooks";
+import { useForm } from "../../hooks/useForm";
 import { useDispatch, useSelector } from "react-redux";
 import { checkingAuthentication, startGoogleSignIn, startLoginWithEmailPassword } from "../../store/auth/thunks";
 import { useMemo } from "react";
