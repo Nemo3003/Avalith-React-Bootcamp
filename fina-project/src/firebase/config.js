@@ -4,10 +4,11 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore/lite";
 
+const FirebaseKey = process.env.API_KEY
 
 const firebaseConfig = {
 
-    apiKey: "AIzaSyAurc5XSpW2ustSwuHLdSr4fCYRJZ7K_uA",
+    apiKey: FirebaseKey,
   authDomain: "rickymorty-app.firebaseapp.com",
   projectId: "rickymorty-app",
   storageBucket: "rickymorty-app.appspot.com",
